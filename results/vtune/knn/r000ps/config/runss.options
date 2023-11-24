@@ -1,0 +1,16 @@
+-r
+D:\Universidade\CHE\CHE\project\results\vtune\knn\r000ps
+--stack-stitching
+--data-limit-mb=1000
+--disk-space-limit=0
+--mrte-type=java,dotnet
+--stack-unwind-limit=8388608
+--itt-config=frame
+--stackwalk=offline
+--mrte-mode=auto
+--type=cpu:counters:nostack
+--type=cpu:nostack
+--interval=100
+--app-working-dir=D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023
+--
+D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe
