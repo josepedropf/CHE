@@ -1,0 +1,223 @@
+        -:    0:Source:timer.c
+        -:    0:Graph:timer.gcno
+        -:    0:Data:timer.gcda
+        -:    0:Runs:5
+        -:    1:#include "timer.h"
+        -:    2:
+        -:    3:
+        -:    4:#if _WIN32
+        -:    5:static double get_time_in_ms() {
+        -:    6:    LARGE_INTEGER t, f;
+        -:    7:    QueryPerformanceCounter(&t);
+        -:    8:    QueryPerformanceFrequency(&f);
+        -:    9:    return (double)t.QuadPart/(double)f.QuadPart * 1000;
+        -:   10:}
+        -:   11:#endif
+        -:   12:
+        -:   13:#if __linux__
+        -:   14:static double calc_delta_ms(struct timespec *this_instant, struct timespec *start_instant);
+        -:   15:#endif
+        -:   16:
+        -:   17:/*
+        -:   18: * Returns a new timer. Call this before anything else.
+        -:   19: * */
+        5:   20:Timer *timer_init() {
+        -:   21:
+        5:   22:    Timer *timer_ptr = malloc(sizeof(Timer));
+        5:   23:    if (timer_ptr == NULL) {
+        -:   24:        return NULL;
+        -:   25:    }
+        -:   26:
+        -:   27:#if __linux__
+        5:   28:    timer_ptr->start_instant = malloc(sizeof(struct timespec));
+        5:   29:    if (timer_ptr->start_instant == NULL) {
+        -:   30:        return NULL;
+        -:   31:    }
+        -:   32:#endif
+        -:   33:
+        5:   34:    timer_ptr->state = STOP;
+        -:   35:
+        5:   36:    return timer_ptr;
+        -:   37:}
+        -:   38:
+        -:   39:/*
+        -:   40: * Destroys the timer, deallocating the memory and NULLing the pointer.
+        -:   41: * */
+        5:   42:Timer *timer_destroy(Timer *timer) {
+        -:   43:
+        5:   44:    if (timer != NULL) {
+        -:   45:
+        -:   46:#if __linux__
+        5:   47:        if (timer->start_instant != NULL) {
+        5:   48:            free(timer->start_instant);
+        -:   49:        }
+        -:   50:#endif
+        -:   51:
+        5:   52:        free(timer);
+        -:   53:    }
+        -:   54:
+        5:   55:    return NULL;
+        -:   56:}
+        -:   57:
+        -:   58:/*
+        -:   59: * This starts the timer. Used at the beginning and after pause. If used after stop, resets the timer.
+        -:   60: * */
+        5:   61:void timer_start(Timer *timer) {
+        -:   62:
+        5:   63:    switch (timer->state) {
+        -:   64:
+        5:   65:        case STOP:
+        5:   66:            timer->total_time = 0.0;
+        5:   67:            timer->state = START;
+        -:   68:#if _WIN32
+        -:   69:            timer->start_instant = get_time_in_ms();
+        -:   70:#endif
+        -:   71:#if __linux__
+        5:   72:            clock_gettime(CLOCK_MONOTONIC, timer->start_instant);
+        -:   73:#endif
+        5:   74:            break;
+    #####:   75:        case PAUSE:
+        -:   76:
+    #####:   77:            timer->state = START;
+        -:   78:#if _WIN32
+        -:   79:            timer->start_instant = get_time_in_ms();
+        -:   80:#endif
+        -:   81:#if __linux__
+    #####:   82:            clock_gettime(CLOCK_MONOTONIC, timer->start_instant);
+        -:   83:#endif
+        -:   84:
+    #####:   85:            break;
+        -:   86:        default:
+        -:   87:            break;
+        -:   88:    }
+        5:   89:}
+        -:   90:
+        -:   91:
+        -:   92:/*
+        -:   93: * This pauses the timer. The timer can be continued by calling start.
+        -:   94: * */
+    #####:   95:void timer_pause(Timer *timer) {
+        -:   96:
+        -:   97:#if _WIN32
+        -:   98:    double this_instant;
+        -:   99:#endif
+        -:  100:#if __linux__
+        -:  101:    struct timespec this_instant;
+        -:  102:#endif
+        -:  103:
+        -:  104:    double delta;
+        -:  105:
+    #####:  106:    switch (timer->state) {
+        -:  107:
+    #####:  108:        case START:
+        -:  109:
+        -:  110:#if _WIN32
+        -:  111:            this_instant = get_time_in_ms();
+        -:  112:            delta = this_instant - timer->start_instant;
+        -:  113:#endif
+        -:  114:#if __linux__
+    #####:  115:            clock_gettime(CLOCK_MONOTONIC, &this_instant);
+    #####:  116:            delta = calc_delta_ms(&this_instant, timer->start_instant);
+        -:  117:#endif
+    #####:  118:            timer->total_time += delta;
+        -:  119:
+    #####:  120:            timer->state = PAUSE;
+    #####:  121:            break;
+        -:  122:        default:
+        -:  123:            break;
+        -:  124:    }
+    #####:  125:}
+        -:  126:
+        -:  127:/*
+        -:  128: * Stops the timer. If start is called after this, the timer will be restarted.
+        -:  129: * */
+        5:  130:void timer_stop(Timer *timer) {
+        -:  131:
+        -:  132:#if _WIN32
+        -:  133:    double this_instant;
+        -:  134:#endif
+        -:  135:#if __linux__
+        -:  136:    struct timespec this_instant;
+        -:  137:#endif
+        -:  138:
+        -:  139:    double delta;
+        -:  140:
+        5:  141:    switch (timer->state) {
+        5:  142:        case START:
+        -:  143:
+        -:  144:#if _WIN32
+        -:  145:            this_instant = get_time_in_ms();
+        -:  146:            delta = this_instant - timer->start_instant;
+        -:  147:#endif
+        -:  148:#if __linux__
+        5:  149:            clock_gettime(CLOCK_MONOTONIC, &this_instant);
+        5:  150:            delta = calc_delta_ms(&this_instant, timer->start_instant);
+        -:  151:#endif
+        5:  152:            timer->total_time += delta;
+        -:  153:
+        5:  154:            timer->state = STOP;
+        5:  155:            break;
+    #####:  156:        case PAUSE:
+    #####:  157:            timer->state = STOP;
+    #####:  158:            break;
+        -:  159:        default:
+        -:  160:            break;
+        -:  161:    }
+        5:  162:}
+        -:  163:
+        -:  164:
+        -:  165:/*
+        -:  166: * Returns the time elapsed in milliseconds.
+        -:  167: * */
+        5:  168:double timer_get_ms(Timer *timer) {
+        -:  169:
+        -:  170:#if _WIN32
+        -:  171:    double this_instant;
+        -:  172:#endif
+        -:  173:#if __linux__
+        -:  174:    struct timespec this_instant;
+        -:  175:#endif
+        -:  176:    double delta;
+        -:  177:
+        5:  178:    switch (timer->state) {
+    #####:  179:        case START:
+        -:  180:
+        -:  181:#if _WIN32
+        -:  182:            this_instant = get_time_in_ms();
+        -:  183:            delta = this_instant - timer->start_instant;
+        -:  184:#endif
+        -:  185:#if __linux__
+    #####:  186:            clock_gettime(CLOCK_MONOTONIC, &this_instant);
+    #####:  187:            delta = calc_delta_ms(&this_instant, timer->start_instant);
+        -:  188:#endif
+        -:  189:
+    #####:  190:            return timer->total_time + delta;
+        5:  191:        case STOP:
+        5:  192:            return timer->total_time;
+    #####:  193:        case PAUSE:
+    #####:  194:            return timer->total_time;
+        -:  195:        default:
+        -:  196:            return 0;
+        -:  197:    }
+        -:  198:}
+        -:  199:
+        5:  200:double timer_get_s(Timer *timer) {
+        5:  201:    return timer_get_ms(timer) * 1e-3;
+        -:  202:}
+        -:  203:
+    #####:  204:double timer_get_us(Timer *timer) {
+    #####:  205:    return timer_get_ms(timer) * 1e3;
+        -:  206:}
+        -:  207:
+        -:  208:#if __linux__
+        -:  209:
+        -:  210:/*
+        -:  211: * Calculates the timer difference between two instants in milliseconds.
+        -:  212: * */
+        5:  213:static double calc_delta_ms(struct timespec *this_instant, struct timespec *start_instant) {
+        -:  214:
+        5:  215:    return (this_instant->tv_sec - start_instant->tv_sec) * 1e3 +
+        5:  216:           (double) (this_instant->tv_nsec - start_instant->tv_nsec) * 1e-6;
+        -:  217:}
+        -:  218:
+        -:  219:#endif

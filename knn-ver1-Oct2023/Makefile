@@ -13,7 +13,7 @@ endif
 ## Makefile code ##
 CC = gcc
 
-CFLAGS = -pg -fprofile-arcs -ftest-coverage -Wall -Wextra -fmax-errors=10 -lm -Ofast
+CFLAGS = -pg -fprofile-arcs -coverage -Wall -Wextra -fmax-errors=10 -lm -Ofast
 CSTD = --std=gnu99
 KNN_FLAGS =
 
