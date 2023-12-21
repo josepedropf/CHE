@@ -1,0 +1,165 @@
+        -:    0:Source:knn.c
+        -:    0:Graph:knn.gcno
+        -:    0:Data:knn.gcda
+        -:    0:Runs:0
+        -:    1:/**
+        -:    2:*	k-NN
+        -:    3:*
+        -:    4:*	Versions
+        -:    5:*	- v0.1, December 2016
+        -:    6:*	- v0.2, November 2019
+        -:    7:*	- v0.5, November 2021
+        -:    8:*   - v0.6, October 2023
+        -:    9:*
+        -:   10:*	by João MP Cardoso
+        -:   11:*	Email: jmpc@fe.up.pt
+        -:   12:*
+        -:   13:*	SPeCS, FEUP.DEI, University of Porto, Portugal
+        -:   14:*/
+        -:   15:
+        -:   16:#include <math.h>
+        -:   17:#include <stdlib.h>
+        -:   18:
+        -:   19:#ifndef NDEBUG
+        -:   20:#define NDEBUG // disable assertions
+        -:   21:#endif
+        -:   22:
+        -:   23:#include <assert.h>
+        -:   24:
+        -:   25:#include "knn.h"
+        -:   26:
+        -:   27:
+        -:   28:/**
+        -:   29:*  Copy the top k nearest points (first k elements of dist_points) 
+        -:   30:*  to a data structure (best_points) with k points
+        -:   31:*/
+    #####:   32:void copy_k_nearest(BestPoint *dist_points, int num_points,
+        -:   33:		BestPoint *best_points, int k) {
+        -:   34:
+    #####:   35:    for(int i = 0; i < k; i++) {   // we only need the top k minimum distances
+    #####:   36:       best_points[i].classification_id = dist_points[i].classification_id;
+    #####:   37:       best_points[i].distance = dist_points[i].distance;
+        -:   38:    }
+        -:   39:
+    #####:   40:}
+        -:   41:
+        -:   42:/**
+        -:   43:*  Get the k nearest points.
+        -:   44:*  This version stores the k nearest points in the first k positions of dis_point
+        -:   45:*/
+    #####:   46:void select_k_nearest(BestPoint *dist_points, int num_points, int k) {
+        -:   47:
+        -:   48:    DATA_TYPE min_distance, distance_i;
+        -:   49:    CLASS_ID_TYPE class_id_1;
+        -:   50:    int index;
+        -:   51:
+    #####:   52:    for(int i = 0; i < k; i++) {  // we only need the top k minimum distances
+    #####:   53:      min_distance = dist_points[i].distance;
+    #####:   54:      index = i;
+    #####:   55:      for(int j = i+1; j < num_points; j++) {
+    #####:   56:              if(dist_points[j].distance < min_distance) {
+    #####:   57:                  min_distance = dist_points[j].distance;
+    #####:   58:                  index = j;
+        -:   59:              }
+        -:   60:      }
+    #####:   61:      if(index != i) { //swap
+    #####:   62:         distance_i = dist_points[index].distance;
+    #####:   63:         class_id_1 = dist_points[index].classification_id;
+        -:   64:
+    #####:   65:         dist_points[index].distance = dist_points[i].distance;
+    #####:   66:         dist_points[index].classification_id = dist_points[i].classification_id;
+        -:   67:
+    #####:   68:         dist_points[i].distance = distance_i;
+    #####:   69:         dist_points[i].classification_id = class_id_1;
+        -:   70:      }
+        -:   71:    }
+    #####:   72:}
+        -:   73:
+        -:   74:/*
+        -:   75:* Main kNN function.
+        -:   76:* It calculates the distances and calculates the nearest k points.
+        -:   77:*/
+    #####:   78:void get_k_NN(Point new_point, Point *known_points, int num_points,
+    #####:   79:	BestPoint *best_points, int k,  int num_features) {
+        -:   80:     
+    #####:   81:     BestPoint dist_points[num_points];
+        -:   82:
+        -:   83:    // calculate the Euclidean distance between the Point to classify and each one in the model
+        -:   84:    // and update the k best points if needed
+    #####:   85:    for (int i = 0; i < num_points; i++) {
+    #####:   86:        DATA_TYPE distance = (DATA_TYPE) 0.0;
+        -:   87:
+        -:   88:        // calculate the Euclidean distance
+    #####:   89:        for (int j = 0; j < num_features; j++) {
+    #####:   90:            DATA_TYPE diff = (DATA_TYPE) new_point.features[j] - (DATA_TYPE) known_points[i].features[j];
+    #####:   91:            distance += diff * diff;
+        -:   92:        }
+    #####:   93:        distance = sqrt(distance);
+        -:   94:
+    #####:   95:        dist_points[i].classification_id = known_points[i].classification_id;
+    #####:   96:        dist_points[i].distance = distance;
+        -:   97:    }
+        -:   98:
+    #####:   99:    select_k_nearest(dist_points, num_points, k);
+        -:  100:    
+    #####:  101:    copy_k_nearest(dist_points, num_points, best_points, k);
+    #####:  102:}
+        -:  103:
+        -:  104:/*
+        -:  105:*	Classify using the k nearest neighbors identified by the get_k_NN
+        -:  106:*	function. The classification uses plurality voting.
+        -:  107:*
+        -:  108:*	Note: it assumes that classes are identified from 0 to
+        -:  109:*	num_classes - 1.
+        -:  110:*/
+    #####:  111:CLASS_ID_TYPE plurality_voting(int k, BestPoint *best_points, int num_classes) {
+        -:  112:  
+    #####:  113:              CLASS_ID_TYPE histogram[num_classes];  // maximum is the value of k
+        -:  114:
+        -:  115:    //initialize the histogram
+    #####:  116:    for (int i = 0; i < num_classes; i++) {
+    #####:  117:        histogram[i] = 0;
+        -:  118:    }
+        -:  119:
+        -:  120:    // build the histogram
+    #####:  121:    for (int i = 0; i < k; i++) {
+    #####:  122:        BestPoint p = best_points[i];
+        -:  123:        //if (best_points[i].distance < min_distance) {
+        -:  124:        //    min_distance = best_points[i].distance;
+        -:  125:        //}
+        -:  126:
+        -:  127:        assert(p.classification_id != -1);
+        -:  128:
+    #####:  129:        histogram[(int) p.classification_id] += 1;
+        -:  130:    }
+        -:  131:
+    #####:  132:    CLASS_ID_TYPE max = 0; // maximum is k
+    #####:  133:    CLASS_ID_TYPE classification_id = -1;  // -1 represents an unknown class
+    #####:  134:    for (int i = 0; i < num_classes; i++) {
+        -:  135:
+    #####:  136:        if (histogram[i] > max) {
+    #####:  137:            max = histogram[i];
+    #####:  138:            classification_id = (CLASS_ID_TYPE) i;
+        -:  139:        }
+        -:  140:    }
+        -:  141:
+    #####:  142:    return classification_id;
+        -:  143:}
+        -:  144:
+        -:  145:/*
+        -:  146:* Classify a given Point (instance).
+        -:  147:* It returns the classified class ID.
+        -:  148:*/
+    #####:  149:CLASS_ID_TYPE knn_classifyinstance(Point new_point, int k, int num_classes, Point *known_points, int num_points, int num_features) {
+        -:  150:
+    #####:  151:      BestPoint best_points[k]; // Array with the k nearest points to the Point to classify
+        -:  152:
+        -:  153:      // calculate the distances of the new point to each of the known points and get
+        -:  154:      // the k nearest points
+    #####:  155:       get_k_NN(new_point, known_points, num_points, best_points, k, num_features);
+        -:  156:
+        -:  157:	// use plurality voting to return the class inferred for the new point
+    #####:  158:	CLASS_ID_TYPE classID = plurality_voting(k, best_points, num_classes);
+        -:  159:
+    #####:  160:	return classID;
+        -:  161:}

@@ -29,10 +29,10 @@
        <targetName>launch</targetName>
        <result_directory.path>D:\Universidade\CHE\CHE\project\results\vtune\knn\r@@@{at}</result_directory.path>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
+       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
        <launch_app.app_parameters></launch_app.app_parameters>
        <launch.userappworkdir></launch.userappworkdir>
-       <launch_app.working_folder>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023</launch_app.working_folder>
+       <launch_app.working_folder>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch_app.working_folder>
        <context>
         <contextValue>
          <id>allowMultipleRuns</id>

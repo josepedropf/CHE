@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<log version="1.0" tool="runtool">
+
+<msg id="1" tool="runtool">
+  <type>log-start</type>
+  <arg>2023/11/28 16:45:45</arg>
+</msg>
+<msg id="2" tool="runtool">
+  <type>collector-starts</type>
+</msg>
+<msg id="3" tool="runtool">
+  <type>marker-file</type>
+  <arg>D:\Universidade\CHE\CHE\results\advisor\knn\e000\mp001\mp001.advixe</arg>
+</msg>
+<msg id="4" tool="tc">
+  <type>START</type>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:46 2023</timestamp>
+</msg>
+<msg id="5" tool="tc">
+  <type>EXEC_OF_INTEREST</type>
+  <arg>d:\universidade\che\che\knn-ver1-oct2023\knn.exe</arg>
+  <arg>15404</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:46 2023</timestamp>
+</msg>
+<msg id="6" tool="tc">
+  <type>LOAD_MODULE</type>
+  <arg>d:\universidade\che\che\knn-ver1-oct2023\knn.exe</arg>
+  <arg>0x400000</arg>
+  <arg>0x50dfff</arg>
+  <arg>1</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:46 2023</timestamp>
+</msg>
+<msg id="7" tool="tc">
+  <type>LOAD_MODULE</type>
+  <arg>c:\windows\system32\kernelbase.dll</arg>
+  <arg>0x7ff893250000</arg>
+  <arg>0x7ff8935f4fff</arg>
+  <arg>2</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:46 2023</timestamp>
+</msg>
+<msg id="8" tool="tc">
+  <type>LOAD_MODULE</type>
+  <arg>c:\windows\system32\kernel32.dll</arg>
+  <arg>0x7ff894d90000</arg>
+  <arg>0x7ff894e53fff</arg>
+  <arg>3</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:47 2023</timestamp>
+</msg>
+<msg id="9" tool="tc">
+  <type>LOAD_MODULE</type>
+  <arg>c:\windows\system32\ntdll.dll</arg>
+  <arg>0x7ff895d70000</arg>
+  <arg>0x7ff895f86fff</arg>
+  <arg>4</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:47 2023</timestamp>
+</msg>
+<msg id="10" tool="tc">
+  <type>LOAD_MODULE</type>
+  <arg>c:\windows\system32\msvcrt.dll</arg>
+  <arg>0x7ff894c20000</arg>
+  <arg>0x7ff894cc6fff</arg>
+  <arg>5</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:49 2023</timestamp>
+</msg>
+<msg id="11" tool="tc">
+  <type>UNLOAD_MODULE</type>
+  <arg>d:\universidade\che\che\knn-ver1-oct2023\knn.exe</arg>
+  <arg>1</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="12" tool="tc">
+  <type>UNLOAD_MODULE</type>
+  <arg>c:\windows\system32\kernelbase.dll</arg>
+  <arg>2</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="13" tool="tc">
+  <type>UNLOAD_MODULE</type>
+  <arg>c:\windows\system32\kernel32.dll</arg>
+  <arg>3</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="14" tool="tc">
+  <type>UNLOAD_MODULE</type>
+  <arg>c:\windows\system32\ntdll.dll</arg>
+  <arg>4</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="15" tool="tc">
+  <type>UNLOAD_MODULE</type>
+  <arg>c:\windows\system32\msvcrt.dll</arg>
+  <arg>5</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="16" tool="tc">
+  <type>PROCESS_TERMINATE</type>
+  <arg>d:\universidade\che\che\knn-ver1-oct2023\knn.exe</arg>
+  <arg>15404</arg>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="17" tool="tc">
+  <type>NO_ANNOTATIONS</type>
+  <severity>WARNING</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="18" tool="tc">
+  <type>ANALYSIS_COMPLETE</type>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="19" tool="tc">
+  <type>STOP</type>
+  <severity>INFO</severity>
+  <timestamp>Tue Nov 28 16:45:53 2023</timestamp>
+</msg>
+<msg id="20" tool="runtool">
+  <type>app-exit-code</type>
+  <arg>0</arg>
+</msg>
+<msg id="21" tool="runtool">
+  <type>marker-file</type>
+  <arg>D:\Universidade\CHE\CHE\results\advisor\knn\e000\mp001\mp001.advixe</arg>
+</msg>
+<msg id="22" tool="runtool">
+  <type>collector-done</type>
+</msg>
+<msg id="23" tool="runtool">
+  <type>log-end</type>
+  <arg>2023/11/28 16:45:56</arg>
+</msg>
+
+</log>
+

@@ -1,0 +1,14 @@
+GTPin version 3.7 (d50dfd0d)
+
+[INFO] GTPIN_ImageLoadCallback(D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe, 400000)
+[INFO] GTPIN_ImageLoadCallback(C:\WINDOWS\SYSTEM32\ntdll.dll, 7ffa73c30000)
+[INFO] GTPIN_ImageLoadCallback(C:\WINDOWS\System32\KERNEL32.DLL, 7ffa72630000)
+[INFO] GTPIN_ImageLoadCallback(C:\WINDOWS\System32\KERNELBASE.dll, 7ffa711e0000)
+[INFO] GTPIN_ImageLoadCallback(d:\program files (x86)\intel\oneapi\advisor\2024.0\bin64\gtpin\ged.dll, 7ff9cca60000)
+[INFO] GTPIN_ImageLoadCallback(d:\program files (x86)\intel\oneapi\advisor\2024.0\bin64\gtpin\gtpin.dll, 7ff9ccf30000)
+[INFO] GTPIN_ImageLoadCallback(d:\program files (x86)\intel\oneapi\advisor\2024.0\bin64\gtpin\gtpin_core.dll, 7ff9cc800000)
+[INFO] GTPIN_ImageLoadCallback(d:\program files (x86)\intel\oneapi\advisor\2024.0\bin64\gtpin\iga_wrapper.dll, 7ff9cb840000)
+[INFO] GTPIN_ImageLoadCallback(C:\WINDOWS\SYSTEM32\VERSION.dll, 7ffa68630000)
+[INFO] GTPIN_ImageLoadCallback(C:\WINDOWS\System32\msvcrt.dll, 7ffa728a0000)
+[INFO] GTPIN_ImageLoadCallback(D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe, 400000)
+GTPin WARNING: GTPin couldn't find all required libraries... Exiting without doing anything

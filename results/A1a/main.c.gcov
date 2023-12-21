@@ -1,0 +1,284 @@
+        -:    0:Source:main.c
+        -:    0:Graph:knn-main.gcno
+        -:    0:Data:knn-main.gcda
+        -:    0:Runs:34
+        -:    1:/**
+        -:    2:*	FEUP.DEI, 	v0.6 November 2021
+        -:    3:*				v0.7 December 2022
+        -:    4:*
+        -:    5:*	Scenario A1, WISDM dataset: without using files for input data
+        -:    6:*	Files for scenario must be copied from scenario-wisdm/
+        -:    7:*	READ 1
+        -:    8:*	NUM_TRAINING_SAMPLES 4336
+        -:    9:*	NUM_TESTING_SAMPLES 1082
+        -:   10:*	NUM_FEATURES 43 
+        -:   11:*	NUM_CLASSES 6
+        -:   12:*	TIMMING 0 or *1*
+        -:   13:*	ACCURACY 0 or *1*
+        -:   14:*	NORMALIZE 0 or *1*  // use 1
+        -:   15:*	K = 3 or 20
+        -:   16:* 	DATA_TYPE = float or double
+        -:   17:*
+        -:   18:*	Scenario A2, generated dataset: without using files for input data
+        -:   19:*	Files for scenario must be copied from scenario-gen100x8x10000/
+        -:   20:*	READ 1
+        -:   21:*	NUM_TRAINING_SAMPLES 8004
+        -:   22:*	NUM_TESTING_SAMPLES 1996
+        -:   23:*	NUM_FEATURES 100
+        -:   24:*	NUM_CLASSES 8
+        -:   25:*	TIMMING 0 or *1*
+        -:   26:*	ACCURACY 0 or *1*
+        -:   27:*	NORMALIZE 0 or *1* // use 1
+        -:   28:*	K = 20
+        -:   29:* 	DATA_TYPE = float or double
+        -:   30:*
+        -:   31:*	Scenario A3, generated dataset: without using files for input data
+        -:   32:*	Files for scenario must be copied from scenario-gen100x8x50000/
+        -:   33:*	READ 1
+        -:   34:*	NUM_TRAINING_SAMPLES 40002
+        -:   35:*	NUM_TESTING_SAMPLES 9998
+        -:   36:*	NUM_FEATURES 100
+        -:   37:*	NUM_CLASSES 8
+        -:   38:*	TIMMING 0 or *1*
+        -:   39:*	ACCURACY 0 or *1*
+        -:   40:*	NORMALIZE 0 or *1* // use 1
+        -:   41:*	K = 20
+        -:   42:* 	DATA_TYPE = float or double
+        -:   43:*
+        -:   44:* 	Scenario B: using random data
+        -:   45:*	READ 3
+        -:   46:*	NUM_TRAINING_SAMPLES *not needed*
+        -:   47:*	NUM_TESTING_SAMPLES *not needed*
+        -:   48:*	NUM_FEATURES *must be defined*
+        -:   49:*	NUM_CLASSES *name of the file is used to identify a specific configuration*
+        -:   50:*	TIMMING 0 or *1*
+        -:   51:*	ACCURACY *0* or 1
+        -:   52:*	NORMALIZE *0* or 1 // use 1
+        -:   53:*
+        -:   54:* 	Scenario C: using files for input data
+        -:   55:*	READ 2
+        -:   56:*	NUM_TRAINING_SAMPLES *not needed*
+        -:   57:*	NUM_TESTING_SAMPLES *not needed*
+        -:   58:*	NUM_FEATURES 100
+        -:   59:*	NUM_CLASSES *from file*
+        -:   60:*	TIMMING 0 or *1*
+        -:   61:*	ACCURACY *0* or 1
+        -:   62:*	NORMALIZE *0* or 1 // use 1
+        -:   63:*
+        -:   64:*/
+        -:   65:
+        -:   66:
+        -:   67:#ifndef TIMMING
+        -:   68:	#define TIMMING 1 // 0: without; 1: Linux/Windows, 2: specific timers (not implemented)
+        -:   69:#endif
+        -:   70:
+        -:   71:#ifndef READ
+        -:   72:	#define READ 1 // 1: all embedded in program; 2: read from .dat; 3: random data
+        -:   73:#endif
+        -:   74:
+        -:   75:#ifndef VERIFY
+        -:   76:	#define VERIFY 0 	// 0: none verification;
+        -:   77:						// 1: to verify if the results are according to the ones expected
+        -:   78:						// only for READ = 1, scenario A1, or READ = 2
+        -:   79:#endif
+        -:   80:
+        -:   81:#ifndef ACCURACY
+        -:   82:	#define ACCURACY 1 	// 0: no; 1: to report the accuracy of the classification
+        -:   83:						// only used for READ = 1 or READ = 2
+        -:   84:#endif
+        -:   85:
+        -:   86:#ifndef NORMALIZE
+        -:   87:	#define NORMALIZE 1 // 0: nothing; 1: minmax normalization of features
+        -:   88:#endif
+        -:   89:
+        -:   90:#ifndef STREAMING
+        -:   91:	#define STREAMING 1 
+        -:   92:	// if normalization is enable then:
+        -:   93:	//	0: all the points are first normalized and only then the classification occurs; 
+        -:   94:	// 	1: each point is normalized in the loop of the classification
+        -:   95:#endif
+        -:   96:
+        -:   97:#include <stdio.h>
+        -:   98:
+        -:   99:#include "params.h"
+        -:  100:#include "types.h"
+        -:  101:#include "utils.h"
+        -:  102:#include "io.h"
+        -:  103:#include "knn.h"
+        -:  104:
+        -:  105:#if TIMMING == 1
+        -:  106:	#include "timer.h"
+        -:  107:#endif
+        -:  108:
+        -:  109:
+        -:  110:#if READ == 1 // data embedded in program
+        -:  111:	
+        -:  112:	Point known_points1[NUM_TRAINING_SAMPLES] = {
+        -:  113:							#include "train.dat"
+        -:  114:						}; //{{{1,2,3,4,5},'a'}};
+        -:  115:	Point *known_points = known_points1;
+        -:  116:
+        -:  117:	Point new_points1[NUM_TESTING_SAMPLES] = {
+        -:  118:						#include "test.dat"
+        -:  119:						}; //{{{1,2,3,4,5},'a'}};
+        -:  120:	Point *new_points = new_points1;
+        -:  121:
+        -:  122:#else // data read from files or randomly initialized
+        -:  123:	Point *known_points = NULL; // The points representing the instances in the model
+        -:  124:	Point *new_points = NULL; // The points to be classified
+        -:  125:#endif
+        -:  126:
+        -:  127:#if defined VERIFY  // verify if classifications are still the original
+        -:  128:#if READ == 1
+        -:  129:	unsigned char key[NUM_TESTING_SAMPLES] = {
+        -:  130:		#if K == 20
+        -:  131:			#include "key-READ1-k20.dat"
+        -:  132:		#elif K == 3
+        -:  133:			#include "key-READ1-k3.dat"
+        -:  134:		#endif
+        -:  135:	};
+        -:  136:#else
+        -:  137:	CLASS_ID_TYPE *key = NULL; // The classification key
+        -:  138:#endif
+        -:  139:#endif
+        -:  140:
+        -:  141:
+       34:  142:int main(int argc, char **argv) {
+        -:  143:
+        -:  144:    int num_points, num_classes, num_new_points, k;
+        -:  145:
+       34:  146:	const int num_features = NUM_FEATURES;
+        -:  147:
+        -:  148:	#if READ == 1 // data embedded in program
+       34:  149:		printf("Data points initialized with WISDM dataset...\n");
+       34:  150:		k = K;
+       34:  151:        num_classes = NUM_CLASSES;
+       34:  152:        num_points = NUM_TRAINING_SAMPLES;
+       34:  153:        num_new_points = NUM_TESTING_SAMPLES;
+        -:  154:	#elif READ == 2  // data read from .dat file
+        -:  155:		printf("Initializing data points from .dat ...\n");
+        -:  156:		read_data(argc, argv, &num_points, &num_classes, &num_new_points, &k, &known_points, 
+        -:  157:		&new_points, &key, num_features);
+        -:  158:		printf("Initialization done.\n\n");
+        -:  159:	#elif READ == 3  // data randomly initialized
+        -:  160:		printf("Initializing data points with random data ...\n");
+        -:  161:		generate_random_data(argc, argv, &num_points, &num_classes, &num_new_points, &k, 
+        -:  162:		&known_points, &new_points, &key, num_features);
+        -:  163:		printf("Initialization done.\n\n");
+        -:  164:	#endif
+        -:  165:
+        -:  166:	#if NORMALIZE == 1 // minmax normalization
+       34:  167:		DATA_TYPE min[num_features];
+       34:  168:		DATA_TYPE max[num_features];
+        -:  169:
+        -:  170:		// determine min and max from known points
+       34:  171:		minmax(min, max, num_points, known_points, num_features);
+        -:  172:
+        -:  173:		// normalize known points
+       34:  174:		minmax_normalize(min, max, num_points, known_points, num_features);
+        -:  175:
+        -:  176:		#if STREAMING == 0
+        -:  177:			// normalize new points
+        -:  178:			minmax_normalize(min, max, num_new_points, new_points, num_features);
+        -:  179:		#endif
+        -:  180:	#endif
+        -:  181:
+       34:  182:    printf("Executing kNN...\n");
+        -:  183:
+        -:  184:	#if TIMMING == 1
+       34:  185:		Timer *timer = timer_init();
+       34:  186:		timer_start(timer);
+        -:  187:	#endif
+        -:  188:
+        -:  189:	#if ACCURACY == 1 && READ != 3
+       34:  190:		int fail = 0; // count the number of test instances incorrectly classified
+        -:  191:	#endif
+        -:  192:
+        -:  193:	// loop over the input instances to classify.
+        -:  194:	// Note that depending on the application this can be
+        -:  195:	// instances arriving as streaming data.
+        -:  196:	// Here assume that the loop below needs to run in serial mode and the
+        -:  197:	// value of num_new_point is just to test
+    36822:  198:    for (int i = 0; i < num_new_points; i++) {
+        -:  199:
+        -:  200:      // get instance to classify
+        -:  201:      // in a streaming implementation this might be something like:
+        -:  202:      // Point *new_point = getPoint();
+    36788:  203:      Point *new_point = &new_points[i];
+        -:  204:
+        -:  205:		#if NORMALIZE == 1 && STREAMING == 1
+        -:  206:			// normalize the point to classify
+    36788:  207:			minmax_normalize_point(min, max, new_point, num_features);
+        -:  208:		#endif
+        -:  209:
+    36788:  210:        CLASS_ID_TYPE instance_class = knn_classifyinstance(*new_point, k, num_classes,
+        -:  211:                                       known_points, num_points, num_features);
+        -:  212:
+        -:  213:                // to show the data associated to the point
+        -:  214:		// show_point(*new_points,num_features);
+        -:  215:
+        -:  216:		#if ACCURACY == 1 && READ != 3
+    36788:  217:			if(new_point->classification_id != instance_class) fail++;
+        -:  218:		#endif
+        -:  219:
+        -:  220:                // The following store the inferred class in the point structure
+        -:  221:                // In practice and especially in streaming operation, this
+        -:  222:                // may not be done and the class is output to the subsequent
+        -:  223:                // stages of the application
+        -:  224:                // For now this is used to verify the results by comparing
+        -:  225:                // the class obtained for each point to a golden class
+    36788:  226:		new_point->classification_id = instance_class;
+        -:  227:
+        -:  228:                // for now: output the inferred class of the instance
+    36788:  229:		printf("point %d class id: %d\n",i, instance_class);
+        -:  230:    }
+        -:  231:
+        -:  232:
+        -:  233:	#if TIMMING == 1
+       34:  234:		timer_stop(timer);
+        -:  235:	#endif
+        -:  236:
+       34:  237:    printf("kNN done.\n\n");
+        -:  238:
+       34:  239:    printf("kNN: number of classes = %d\n", num_classes);
+       34:  240:    printf("kNN: number of training instances = %d\n", num_points);
+       34:  241:    printf("kNN: number of features = %d\n", num_features);
+       34:  242:    printf("kNN: k = %d\n", k);
+        -:  243:
+        -:  244:    if(sizeof(DATA_TYPE) == 4)
+        -:  245:      printf("kNN: data type used = float\n");
+        -:  246:    else if(sizeof(DATA_TYPE) == 8)
+       34:  247:      printf("kNN: data type used = double\n");
+        -:  248:
+       34:  249:    printf("kNN: number of classified instances = %d\n", num_new_points);
+        -:  250:
+        -:  251:	#if ACCURACY == 1 && READ != 3
+       34:  252:		printf("kNN: number of classifications wrong = %d\n", fail);
+       34:  253:		printf("kNN: number of classifications right = %d\n", num_new_points-fail);
+       34:  254:		printf("kNN: accuracy = %.2f %c\n\n", 100*(float)(num_new_points-fail)/(float) num_new_points, '%');
+        -:  255:	#endif
+        -:  256:
+        -:  257:	#if VERIFY == 1 && READ != 3
+        -:  258:		verify_results(num_new_points, new_points, key);
+        -:  259:	#endif
+        -:  260:
+        -:  261:	#if TIMMING == 1
+       34:  262:		const double time = timer_get_s(timer);
+       34:  263:		printf("\nTime:  %.4f s\n", time);
+        -:  264:		#if READ == 2
+        -:  265:			printf("Score: %d\n", get_reference_score(time, num_points));
+        -:  266:		#endif
+       34:  267:		timer = timer_destroy(timer);
+        -:  268:	#endif
+        -:  269:
+        -:  270:	#if READ != 1
+        -:  271:		free(new_points);
+        -:  272:		free(known_points);
+        -:  273:	#endif
+        -:  274:
+        -:  275:	#if READ == 2 && VERIFY == 1
+        -:  276:		free(key);
+        -:  277:	#endif
+        -:  278:
+       34:  279:    return 0;
+        -:  280:}

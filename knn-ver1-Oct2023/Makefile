@@ -1,4 +1,4 @@
-## OS specific stuff - don't change ##
+## OS specific stuff ##
 ifeq ($(OS),Windows_NT)
 TARGET = knn.exe
 RM = del
@@ -13,7 +13,9 @@ endif
 ## Makefile code ##
 CC = gcc
 
-CFLAGS = -pg -fprofile-arcs -coverage -Wall -Wextra -fmax-errors=10 -lm -Ofast
+CFLAGS = -pg -g -fprofile-arcs -coverage -Wall -Wextra -fmax-errors=0 -lm -Ofast
+##CFLAGS = -g
+LDFLAGS = -lm
 CSTD = --std=gnu99
 KNN_FLAGS =
 
@@ -32,7 +34,7 @@ run_large: $(TARGET)
 	$(RUN) knn_large_1.dat
 
 $(TARGET): knn.o $(OBJS)
-	$(CC) knn.o $(OBJS) $(KNN_FLAGS) $(CFLAGS) -o $(TARGET)
+	$(CC) knn.o $(OBJS) $(KNN_FLAGS) $(CFLAGS) $(LDFLAGS) -o $(TARGET)
 
 knn.o: knn.c
 	$(CC) -c knn.c $(KNN_FLAGS) $(CFLAGS) $(CSTD)

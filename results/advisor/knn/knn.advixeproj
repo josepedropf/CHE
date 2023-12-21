@@ -20,17 +20,33 @@
  <contextValues type="bag"/>
  <All_Configurations-All_Platforms>
   <per_group_workloads>
+   <tripcounts>tripcounts</tripcounts>
    <release>release</release>
   </per_group_workloads>
   <searchDirs>
    <searchCategory>
     <category type="u8_t">1</category>
+    <searchDirectory>
+     <name>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</name>
+     <recursive type="bool">false</recursive>
+     <priority type="bool">true</priority>
+    </searchDirectory>
    </searchCategory>
    <searchCategory>
     <category type="u8_t">2</category>
+    <searchDirectory>
+     <name>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</name>
+     <recursive type="bool">false</recursive>
+     <priority type="bool">true</priority>
+    </searchDirectory>
    </searchCategory>
    <searchCategory>
     <category type="u8_t">3</category>
+    <searchDirectory>
+     <name>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</name>
+     <recursive type="bool">true</recursive>
+     <priority type="bool">true</priority>
+    </searchDirectory>
    </searchCategory>
    <searchCategory>
     <category type="u8_t">4</category>
@@ -42,20 +58,181 @@
     <localhost>release</localhost>
    </selected_workload>
    <result_dir>
-    <localhost>D:\Universidade\CHE\CHE\project\results\advisor\knn</localhost>
+    <localhost>D:\Universidade\CHE\CHE\results\advisor\knn</localhost>
    </result_dir>
    <result_pattern>
     <localhost>r@@@{at}</localhost>
    </result_pattern>
    <workloads>
     <localhost>
+     <attach-tripcounts type="pointer" type_id="dasID_cctrl2::AttachWorkload" ptr_type="dasID_cctrl2::IWorkload">
+      <workload>
+       <targetName>attach-tripcounts</targetName>
+       <result_directory.path>D:\Universidade\CHE\CHE\results\advisor\knn\r@@@{at}</result_directory.path>
+       <use_app_dir_as_work_dir type="bool">false</use_app_dir_as_work_dir>
+       <attach.pid type="null"></attach.pid>
+       <search_directories>
+        <item>
+         <value>sym:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+        <item>
+         <value>bin:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+       </search_directories>
+       <context>
+        <contextValue>
+         <id>auto_finalize</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id>benchmarks-sync</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id>cache_config</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>cache_simulation</id>
+         <value>off</value>
+        </contextValue>
+        <contextValue>
+         <id>cachesim_sampling_factor</id>
+         <value>10</value>
+        </contextValue>
+        <contextValue>
+         <id>config</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>count_memory_objects_accesses</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>cs_file</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>data_reuse_analysis</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>data_transfer</id>
+         <value>off</value>
+        </contextValue>
+        <contextValue>
+         <id>data_transfer_analysis</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>enable_cache_simulation</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>flops_and_masks</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>gpu_conditional_metrics</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>gpu_profiling</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>loops</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>mark-up-list</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>modules_switch</id>
+         <value>knob.modules_switch.exclude</value>
+        </contextValue>
+        <contextValue>
+         <id>page_size</id>
+         <value>4096</value>
+        </contextValue>
+        <contextValue>
+         <id>process_for_analysis</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>profilePython</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>profile_jit</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id>profile_stripped_binaries</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>show_report</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id>stackStitching</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id>stack_access_granularity</id>
+         <value type="s32_t">1048576</value>
+        </contextValue>
+        <contextValue>
+         <id>stacks</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>stl_profiling</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id>targetGPU</id>
+         <value>0:0:2.0</value>
+        </contextValue>
+        <contextValue>
+         <id>targetType</id>
+         <value>attach-tripcounts</value>
+        </contextValue>
+        <contextValue>
+         <id>target_device</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>track_memory_objects</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>track_stack_accesses</id>
+         <value type="bool">false</value>
+        </contextValue>
+        <contextValue>
+         <id>trip_counts</id>
+         <value type="bool">true</value>
+        </contextValue>
+       </context>
+      </workload>
+     </attach-tripcounts>
      <attach-survey type="pointer" type_id="dasID_cctrl2::AttachWorkload" ptr_type="dasID_cctrl2::IWorkload">
       <workload>
        <targetName>attach-survey</targetName>
        <use_app_dir_as_work_dir type="bool">false</use_app_dir_as_work_dir>
        <attach.pid type="null"></attach.pid>
-       <result_directory.path>D:\Universidade\CHE\CHE\project\results\advisor\knn\r@@@{at}</result_directory.path>
-       <search_directories type="bag"/>
+       <result_directory.path>D:\Universidade\CHE\CHE\results\advisor\knn\r@@@{at}</result_directory.path>
+       <search_directories>
+        <item>
+         <value>sym:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+        <item>
+         <value>bin:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+       </search_directories>
        <context>
         <contextValue>
          <id>auto_finalize</id>
@@ -159,9 +336,24 @@
      <suitability type="pointer" type_id="dasID_cctrl2::ApplicationWorkload" ptr_type="dasID_cctrl2::IWorkload">
       <workload>
        <targetName>suitability</targetName>
+       <launch_app.inherit_sys_environment type="bool">true</launch_app.inherit_sys_environment>
+       <launch_app.mpi_run type="bool">false</launch_app.mpi_run>
+       <launch_app.mpi_max_rank type="null"></launch_app.mpi_max_rank>
+       <launch.userapppath>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch.userapppath>
+       <launch.userappworkdir>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch.userappworkdir>
+       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
+       <launch_app.app_parameters></launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <result_directory.path>D:\Universidade\CHE\CHE\project\results\advisor\knn\r@@@{at}</result_directory.path>
-       <search_directories type="bag"/>
+       <launch_app.working_folder>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch_app.working_folder>
+       <result_directory.path>D:\Universidade\CHE\CHE\results\advisor\knn\r@@@{at}</result_directory.path>
+       <search_directories>
+        <item>
+         <value>sym:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+        <item>
+         <value>bin:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+       </search_directories>
        <context>
         <contextValue>
          <id>dataLimit</id>
@@ -173,7 +365,7 @@
         </contextValue>
         <contextValue>
          <id>mrte_mode</id>
-         <value>auto</value>
+         <value>managed</value>
         </contextValue>
         <contextValue>
          <id>process_for_analysis</id>
@@ -193,14 +385,24 @@
      <debug type="pointer" type_id="dasID_cctrl2::ApplicationWorkload" ptr_type="dasID_cctrl2::IWorkload">
       <workload>
        <targetName>debug</targetName>
-       <result_directory.path>D:\Universidade\CHE\CHE\project\results\advisor\knn\r@@@{at}</result_directory.path>
-       <launch.userapppath>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch.userapppath>
-       <launch.userappworkdir></launch.userappworkdir>
-       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
+       <launch_app.inherit_sys_environment type="bool">true</launch_app.inherit_sys_environment>
+       <launch_app.mpi_run type="bool">false</launch_app.mpi_run>
+       <launch_app.mpi_max_rank type="null"></launch_app.mpi_max_rank>
+       <result_directory.path>D:\Universidade\CHE\CHE\results\advisor\knn\r@@@{at}</result_directory.path>
+       <launch.userapppath>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch.userapppath>
+       <launch.userappworkdir>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch.userappworkdir>
+       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
        <launch_app.app_parameters></launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023</launch_app.working_folder>
-       <search_directories type="bag"/>
+       <launch_app.working_folder>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch_app.working_folder>
+       <search_directories>
+        <item>
+         <value>sym:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+        <item>
+         <value>bin:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+       </search_directories>
        <context>
         <contextValue>
          <id>analysis_mode</id>
@@ -228,7 +430,7 @@
         </contextValue>
         <contextValue>
          <id>mrte_mode</id>
-         <value>auto</value>
+         <value>managed</value>
         </contextValue>
         <contextValue>
          <id>process_for_analysis</id>
@@ -268,14 +470,24 @@
      <map type="pointer" type_id="dasID_cctrl2::ApplicationWorkload" ptr_type="dasID_cctrl2::IWorkload">
       <workload>
        <targetName>map</targetName>
-       <result_directory.path>D:\Universidade\CHE\CHE\project\results\advisor\knn\r@@@{at}</result_directory.path>
-       <launch.userapppath>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch.userapppath>
-       <launch.userappworkdir></launch.userappworkdir>
-       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
+       <launch_app.inherit_sys_environment type="bool">true</launch_app.inherit_sys_environment>
+       <launch_app.mpi_run type="bool">false</launch_app.mpi_run>
+       <launch_app.mpi_max_rank type="null"></launch_app.mpi_max_rank>
+       <result_directory.path>D:\Universidade\CHE\CHE\results\advisor\knn\r@@@{at}</result_directory.path>
+       <launch.userapppath>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch.userapppath>
+       <launch.userappworkdir>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch.userappworkdir>
+       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
        <launch_app.app_parameters></launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023</launch_app.working_folder>
-       <search_directories type="bag"/>
+       <launch_app.working_folder>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch_app.working_folder>
+       <search_directories>
+        <item>
+         <value>sym:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+        <item>
+         <value>bin:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+       </search_directories>
        <context>
         <contextValue>
          <id>cachesimAssociativity</id>
@@ -315,7 +527,7 @@
         </contextValue>
         <contextValue>
          <id>mrte_mode</id>
-         <value>auto</value>
+         <value>managed</value>
         </contextValue>
         <contextValue>
          <id>process_for_analysis</id>
@@ -348,12 +560,19 @@
       <workload>
        <targetName>projection</targetName>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <result_directory.path>D:\Universidade\CHE\CHE\project\results\advisor\knn\r@@@{at}</result_directory.path>
-       <search_directories type="bag"/>
+       <result_directory.path>D:\Universidade\CHE\CHE\results\advisor\knn\r@@@{at}</result_directory.path>
+       <search_directories>
+        <item>
+         <value>sym:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+        <item>
+         <value>bin:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+       </search_directories>
        <context>
         <contextValue>
          <id>assume_dependencies</id>
-         <value type="bool">false</value>
+         <value type="bool">true</value>
         </contextValue>
         <contextValue>
          <id>assume_hide_taxes</id>
@@ -532,14 +751,21 @@
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
        <launch_app.inherit_sys_environment type="bool">true</launch_app.inherit_sys_environment>
        <launch_app.mpi_run type="bool">false</launch_app.mpi_run>
-       <result_directory.path>D:\Universidade\CHE\CHE\project\results\advisor\knn\r@@@{at}</result_directory.path>
+       <result_directory.path>D:\Universidade\CHE\CHE\results\advisor\knn\r@@@{at}</result_directory.path>
+       <launch.userapppath>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch.userapppath>
+       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
        <launch_app.app_parameters></launch_app.app_parameters>
-       <launch.userappworkdir></launch.userappworkdir>
+       <launch.userappworkdir>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch.userappworkdir>
        <launch_app.mpi_max_rank type="null"></launch_app.mpi_max_rank>
-       <launch.userapppath>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch.userapppath>
-       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
-       <launch_app.working_folder>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023</launch_app.working_folder>
-       <search_directories type="bag"/>
+       <launch_app.working_folder>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch_app.working_folder>
+       <search_directories>
+        <item>
+         <value>sym:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+        <item>
+         <value>bin:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+       </search_directories>
        <context>
         <contextValue>
          <id>auto_finalize</id>
@@ -559,7 +785,7 @@
         </contextValue>
         <contextValue>
          <id>gpu_profiling</id>
-         <value type="bool">false</value>
+         <value type="bool">true</value>
         </contextValue>
         <contextValue>
          <id>interval</id>
@@ -579,7 +805,7 @@
         </contextValue>
         <contextValue>
          <id>mrte_mode</id>
-         <value>auto</value>
+         <value>managed</value>
         </contextValue>
         <contextValue>
          <id>openclSourceAsm</id>
@@ -644,13 +870,23 @@
       <workload>
        <targetName>tripcounts</targetName>
        <result_directory.path>D:\Universidade\CHE\CHE\project\results\advisor\knn\r@@@{at}</result_directory.path>
-       <launch.userapppath>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch.userapppath>
-       <launch.userappworkdir></launch.userappworkdir>
-       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
+       <launch_app.inherit_sys_environment type="bool">true</launch_app.inherit_sys_environment>
+       <launch_app.mpi_run type="bool">false</launch_app.mpi_run>
+       <launch_app.mpi_max_rank type="null"></launch_app.mpi_max_rank>
+       <launch.userapppath>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch.userapppath>
+       <launch.userappworkdir>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch.userappworkdir>
+       <launch_app.app_to_launch>D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.exe</launch_app.app_to_launch>
        <launch_app.app_parameters></launch_app.app_parameters>
        <use_app_dir_as_work_dir type="bool">true</use_app_dir_as_work_dir>
-       <launch_app.working_folder>D:\Universidade\CHE\CHE\project\knn-ver1-Oct2023</launch_app.working_folder>
-       <search_directories type="bag"/>
+       <launch_app.working_folder>D:\Universidade\CHE\CHE\knn-ver1-Oct2023</launch_app.working_folder>
+       <search_directories>
+        <item>
+         <value>sym:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+        <item>
+         <value>bin:p=D:\Universidade\CHE\CHE\knn-ver1-Oct2023</value>
+        </item>
+       </search_directories>
        <context>
         <contextValue>
          <id>auto_finalize</id>
@@ -666,7 +902,7 @@
         </contextValue>
         <contextValue>
          <id>cache_simulation</id>
-         <value>single</value>
+         <value>off</value>
         </contextValue>
         <contextValue>
          <id>cachesim_sampling_factor</id>
@@ -690,7 +926,7 @@
         </contextValue>
         <contextValue>
          <id>data_transfer</id>
-         <value>light</value>
+         <value>medium</value>
         </contextValue>
         <contextValue>
          <id>data_transfer_analysis</id>
@@ -698,7 +934,7 @@
         </contextValue>
         <contextValue>
          <id>enable_cache_simulation</id>
-         <value type="bool">false</value>
+         <value type="bool">true</value>
         </contextValue>
         <contextValue>
          <id>flops_and_masks</id>
@@ -710,7 +946,7 @@
         </contextValue>
         <contextValue>
          <id>gpu_profiling</id>
-         <value type="bool">false</value>
+         <value type="bool">true</value>
         </contextValue>
         <contextValue>
          <id>loops</id>
@@ -778,7 +1014,7 @@
         </contextValue>
         <contextValue>
          <id>track_memory_objects</id>
-         <value type="bool">false</value>
+         <value type="bool">true</value>
         </contextValue>
         <contextValue>
          <id>track_stack_accesses</id>
