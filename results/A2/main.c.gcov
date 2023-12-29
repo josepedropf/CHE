@@ -196,26 +196,26 @@
         -:  195:	// instances arriving as streaming data.
         -:  196:	// Here assume that the loop below needs to run in serial mode and the
         -:  197:	// value of num_new_point is just to test
-     3249:  198:    for (int i = 0; i < num_new_points; i++) {
+     5991:  198:    for (int i = 0; i < num_new_points; i++) {
         -:  199:
         -:  200:      // get instance to classify
         -:  201:      // in a streaming implementation this might be something like:
         -:  202:      // Point *new_point = getPoint();
-     3246:  203:      Point *new_point = &new_points[i];
+     5988:  203:      Point *new_point = &new_points[i];
         -:  204:
         -:  205:		#if NORMALIZE == 1 && STREAMING == 1
         -:  206:			// normalize the point to classify
-     3246:  207:			minmax_normalize_point(min, max, new_point, num_features);
+     5988:  207:			minmax_normalize_point(min, max, new_point, num_features);
         -:  208:		#endif
         -:  209:
-     3246:  210:        CLASS_ID_TYPE instance_class = knn_classifyinstance(*new_point, k, num_classes,
+     5988:  210:        CLASS_ID_TYPE instance_class = knn_classifyinstance(*new_point, k, num_classes,
         -:  211:                                       known_points, num_points, num_features);
         -:  212:
         -:  213:                // to show the data associated to the point
         -:  214:		// show_point(*new_points,num_features);
         -:  215:
         -:  216:		#if ACCURACY == 1 && READ != 3
-     3246:  217:			if(new_point->classification_id != instance_class) fail++;
+     5988:  217:			if(new_point->classification_id != instance_class) fail++;
         -:  218:		#endif
         -:  219:
         -:  220:                // The following store the inferred class in the point structure
@@ -224,10 +224,10 @@
         -:  223:                // stages of the application
         -:  224:                // For now this is used to verify the results by comparing
         -:  225:                // the class obtained for each point to a golden class
-     3246:  226:		new_point->classification_id = instance_class;
+     5988:  226:		new_point->classification_id = instance_class;
         -:  227:
         -:  228:                // for now: output the inferred class of the instance
-     3246:  229:		printf("point %d class id: %d\n",i, instance_class);
+     5988:  229:		printf("point %d class id: %d\n",i, instance_class);
         -:  230:    }
         -:  231:
         -:  232:
