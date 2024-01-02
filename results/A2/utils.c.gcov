@@ -136,21 +136,21 @@
         -:  135:* Determine the min and max values for each feature for a set of 
         -:  136:* points.
         -:  137:*/ 
-        3:  138:void minmax(DATA_TYPE *min, DATA_TYPE *max, int num_points, Point *known_points, int num_features) {
+        4:  138:void minmax(DATA_TYPE *min, DATA_TYPE *max, int num_points, Point *known_points, int num_features) {
         -:  139:
         -:  140:    
-      303:  141:	for (int j = 0; j < num_features; j++) {
-      300:  142:		min[j] = MAX_FP_VAL;
-      300:  143:		max[j] = MIN_FP_VAL;
+      404:  141:	for (int j = 0; j < num_features; j++) {
+      400:  142:		min[j] = MAX_FP_VAL;
+      400:  143:		max[j] = MIN_FP_VAL;
         -:  144:		//printf("%e, %e\n", MIN_FP_VAL, MAX_FP_VAL);
         -:  145:	}
         -:  146:	
-    24015:  147:	for (int i = 0; i < num_points; i++) {
-  2425212:  148:		for (int j = 0; j < num_features; j++) {
-  2401200:  149:            if(known_points[i].features[j] < min[j]) 
-     2691:  150:				min[j] = known_points[i].features[j];
-  2401200:  151:            if(known_points[i].features[j] > max[j]) 
-     2724:  152:				max[j] = known_points[i].features[j];
+    32020:  147:	for (int i = 0; i < num_points; i++) {
+  3233616:  148:		for (int j = 0; j < num_features; j++) {
+  3201600:  149:            if(known_points[i].features[j] < min[j]) 
+     3588:  150:				min[j] = known_points[i].features[j];
+  3201600:  151:            if(known_points[i].features[j] > max[j]) 
+     3632:  152:				max[j] = known_points[i].features[j];
         -:  153:        }
         -:  154:    }
         -:  155:	
@@ -168,42 +168,42 @@
         -:  167:	}
         -:  168:	printf("}\n");
         -:  169:	*/
-        3:  170:}
+        4:  170:}
         -:  171:
         -:  172:/*
         -:  173:* Normalize the features of each point using minmax normalization.
         -:  174:*/
-        3:  175:void minmax_normalize(DATA_TYPE *min, DATA_TYPE *max, int num_points, Point *points, int num_features) {
+        4:  175:void minmax_normalize(DATA_TYPE *min, DATA_TYPE *max, int num_points, Point *points, int num_features) {
         -:  176:
-    24015:  177:    for (int i = 0; i < num_points; i++) {
-  2425212:  178:        for (int j = 0; j < num_features; j++) {
+    32020:  177:    for (int i = 0; i < num_points; i++) {
+  3233616:  178:        for (int j = 0; j < num_features; j++) {
         -:  179:			
-  2401200:  180:			DATA_TYPE nfeature = (DATA_TYPE) ((points[i].features[j] - min[j])/(max[j] - min[j]));
+  3201600:  180:			DATA_TYPE nfeature = (DATA_TYPE) ((points[i].features[j] - min[j])/(max[j] - min[j]));
         -:  181:			
         -:  182:			// in case the normalization returns a NaN or INF
- 2401200*:  183:			if(isnan(nfeature)) nfeature = (DATA_TYPE) 0.0;
- 2401200*:  184:			else if(isinf(nfeature)) nfeature = (DATA_TYPE) 1.0;
+ 3201600*:  183:			if(isnan(nfeature)) nfeature = (DATA_TYPE) 0.0;
+ 3201600*:  184:			else if(isinf(nfeature)) nfeature = (DATA_TYPE) 1.0;
         -:  185:			
-  2401200:  186:			points[i].features[j] = nfeature;
+  3201600:  186:			points[i].features[j] = nfeature;
         -:  187:		}
         -:  188:		//show_point(points[i], num_features); 
         -:  189:    }
-        3:  190:}
+        4:  190:}
         -:  191:
         -:  192:/*
         -:  193:* Normalize the features of a single point using minmax normalization.
         -:  194:*/
-     5988:  195:void minmax_normalize_point(DATA_TYPE *min, DATA_TYPE *max, Point *point, int num_features) {
+     7984:  195:void minmax_normalize_point(DATA_TYPE *min, DATA_TYPE *max, Point *point, int num_features) {
         -:  196:
-   604788:  197:    for (int j = 0; j < num_features; j++) {
+   806384:  197:    for (int j = 0; j < num_features; j++) {
         -:  198:			
-   598800:  199:		DATA_TYPE nfeature = (DATA_TYPE) ((point->features[j] - min[j])/(max[j] - min[j]));
+   798400:  199:		DATA_TYPE nfeature = (DATA_TYPE) ((point->features[j] - min[j])/(max[j] - min[j]));
         -:  200:			
         -:  201:			// in case the normalization returns a NaN or INF
-  598800*:  202:			if(isnan(nfeature)) nfeature = (DATA_TYPE) 0.0;
-  598800*:  203:			else if(isinf(nfeature)) nfeature = (DATA_TYPE) 1.0;
+  798400*:  202:			if(isnan(nfeature)) nfeature = (DATA_TYPE) 0.0;
+  798400*:  203:			else if(isinf(nfeature)) nfeature = (DATA_TYPE) 1.0;
         -:  204:			
-   598800:  205:			point->features[j] = nfeature;
+   798400:  205:			point->features[j] = nfeature;
         -:  206:    }
-     5988:  207:}
+     7984:  207:}
         -:  208:

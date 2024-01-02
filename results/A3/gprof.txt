@@ -3,24 +3,23 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  ms/call  ms/call  name    
- 83.81     75.06    75.06     9998     7.51     8.69  get_k_NN
- 13.24     86.92    11.86     9998     1.19     1.19  select_k_nearest
-  2.78     89.41     2.49                             sqrt
-  0.07     89.47     0.06    10000     0.01     0.01  minmax_normalize_point
-  0.02     89.49     0.02        1    20.00    20.00  minmax
-  0.02     89.51     0.02        1    20.00    20.00  minmax_normalize
-  0.02     89.53     0.02                             ___chkstk_ms
-  0.02     89.55     0.02                             _mcount_private
-  0.01     89.56     0.01                             isnan
-  0.00     89.56     0.00     9998     0.00     0.00  copy_k_nearest
-  0.00     89.56     0.00     9998     0.00     8.69  knn_classifyinstance
-  0.00     89.56     0.00     9998     0.00     0.00  plurality_voting
-  0.00     89.56     0.00        1     0.00     0.00  timer_destroy
-  0.00     89.56     0.00        1     0.00     0.00  timer_get_ms
-  0.00     89.56     0.00        1     0.00     0.00  timer_get_s
-  0.00     89.56     0.00        1     0.00     0.00  timer_init
-  0.00     89.56     0.00        1     0.00     0.01  timer_start
-  0.00     89.56     0.00        1     0.00     0.01  timer_stop
+ 83.40     68.21    68.21     9998     6.82     7.95  get_k_NN
+ 13.78     79.48    11.27     9998     1.13     1.13  select_k_nearest
+  2.71     81.70     2.22                             sqrt
+  0.05     81.74     0.04        1    40.00    40.00  minmax_normalize
+  0.02     81.76     0.02        1    20.00    20.00  minmax
+  0.01     81.77     0.01     9998     0.00     0.00  copy_k_nearest
+  0.01     81.78     0.01                             __fpclassify
+  0.01     81.79     0.01                             isnan
+  0.00     81.79     0.00    10000     0.00     0.00  minmax_normalize_point
+  0.00     81.79     0.00     9998     0.00     7.95  knn_classifyinstance
+  0.00     81.79     0.00     9998     0.00     0.00  plurality_voting
+  0.00     81.79     0.00        1     0.00     0.00  timer_destroy
+  0.00     81.79     0.00        1     0.00     0.00  timer_get_ms
+  0.00     81.79     0.00        1     0.00     0.00  timer_get_s
+  0.00     81.79     0.00        1     0.00     0.00  timer_init
+  0.00     81.79     0.00        1     0.00     0.00  timer_start
+  0.00     81.79     0.00        1     0.00     0.00  timer_stop
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -58,83 +57,80 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 4 byte(s) for 0.01% of 89.56 seconds
+granularity: each sample hit covers 4 byte(s) for 0.01% of 81.79 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]     97.2    0.00   87.02                 main [1]
-                0.00   86.92    9998/9998        knn_classifyinstance [3]
-                0.06    0.00    9998/10000       minmax_normalize_point [6]
+[1]     97.3    0.00   79.55                 main [1]
+                0.00   79.49    9998/9998        knn_classifyinstance [3]
+                0.04    0.00       1/1           minmax_normalize [6]
                 0.02    0.00       1/1           minmax [7]
-                0.02    0.00       1/1           minmax_normalize [8]
-                0.00    0.00       1/1           timer_start [12]
-                0.00    0.00       1/1           timer_stop [13]
-                0.00    0.00       1/1           timer_init [19]
-                0.00    0.00       1/1           timer_get_s [18]
-                0.00    0.00       1/1           timer_destroy [16]
+                0.00    0.00    9998/10000       minmax_normalize_point [11]
+                0.00    0.00       1/1           timer_init [16]
+                0.00    0.00       1/1           timer_start [17]
+                0.00    0.00       1/1           timer_stop [18]
+                0.00    0.00       1/1           timer_get_s [15]
+                0.00    0.00       1/1           timer_destroy [13]
 -----------------------------------------------
-               75.06   11.86    9998/9998        knn_classifyinstance [3]
-[2]     97.1   75.06   11.86    9998         get_k_NN [2]
-               11.86    0.00    9998/9998        select_k_nearest [4]
-                0.00    0.00    9998/9998        copy_k_nearest [14]
+               68.21   11.28    9998/9998        knn_classifyinstance [3]
+[2]     97.2   68.21   11.28    9998         get_k_NN [2]
+               11.27    0.00    9998/9998        select_k_nearest [4]
+                0.01    0.00    9998/9998        copy_k_nearest [8]
 -----------------------------------------------
-                0.00   86.92    9998/9998        main [1]
-[3]     97.1    0.00   86.92    9998         knn_classifyinstance [3]
-               75.06   11.86    9998/9998        get_k_NN [2]
-                0.00    0.00    9998/9998        plurality_voting [15]
+                0.00   79.49    9998/9998        main [1]
+[3]     97.2    0.00   79.49    9998         knn_classifyinstance [3]
+               68.21   11.28    9998/9998        get_k_NN [2]
+                0.00    0.00    9998/9998        plurality_voting [12]
 -----------------------------------------------
-               11.86    0.00    9998/9998        get_k_NN [2]
-[4]     13.2   11.86    0.00    9998         select_k_nearest [4]
+               11.27    0.00    9998/9998        get_k_NN [2]
+[4]     13.8   11.27    0.00    9998         select_k_nearest [4]
 -----------------------------------------------
                                                  <spontaneous>
-[5]      2.8    2.49    0.00                 sqrt [5]
+[5]      2.7    2.22    0.00                 sqrt [5]
 -----------------------------------------------
-                0.00    0.00       1/10000       timer_start [12]
-                0.00    0.00       1/10000       timer_stop [13]
-                0.06    0.00    9998/10000       main [1]
-[6]      0.1    0.06    0.00   10000         minmax_normalize_point [6]
+                0.04    0.00       1/1           main [1]
+[6]      0.0    0.04    0.00       1         minmax_normalize [6]
 -----------------------------------------------
                 0.02    0.00       1/1           main [1]
 [7]      0.0    0.02    0.00       1         minmax [7]
 -----------------------------------------------
-                0.02    0.00       1/1           main [1]
-[8]      0.0    0.02    0.00       1         minmax_normalize [8]
+                0.01    0.00    9998/9998        get_k_NN [2]
+[8]      0.0    0.01    0.00    9998         copy_k_nearest [8]
 -----------------------------------------------
                                                  <spontaneous>
-[9]      0.0    0.02    0.00                 ___chkstk_ms [9]
+[9]      0.0    0.01    0.00                 isnan [9]
 -----------------------------------------------
                                                  <spontaneous>
-[10]     0.0    0.02    0.00                 _mcount_private [10]
+[10]     0.0    0.01    0.00                 __fpclassify [10]
 -----------------------------------------------
-                                                 <spontaneous>
-[11]     0.0    0.01    0.00                 isnan [11]
------------------------------------------------
-                0.00    0.00       1/1           main [1]
-[12]     0.0    0.00    0.00       1         timer_start [12]
-                0.00    0.00       1/10000       minmax_normalize_point [6]
------------------------------------------------
-                0.00    0.00       1/1           main [1]
-[13]     0.0    0.00    0.00       1         timer_stop [13]
-                0.00    0.00       1/10000       minmax_normalize_point [6]
------------------------------------------------
-                0.00    0.00    9998/9998        get_k_NN [2]
-[14]     0.0    0.00    0.00    9998         copy_k_nearest [14]
+                0.00    0.00       1/10000       timer_start [17]
+                0.00    0.00       1/10000       timer_stop [18]
+                0.00    0.00    9998/10000       main [1]
+[11]     0.0    0.00    0.00   10000         minmax_normalize_point [11]
 -----------------------------------------------
                 0.00    0.00    9998/9998        knn_classifyinstance [3]
-[15]     0.0    0.00    0.00    9998         plurality_voting [15]
+[12]     0.0    0.00    0.00    9998         plurality_voting [12]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[16]     0.0    0.00    0.00       1         timer_destroy [16]
+[13]     0.0    0.00    0.00       1         timer_destroy [13]
 -----------------------------------------------
-                0.00    0.00       1/1           timer_get_s [18]
-[17]     0.0    0.00    0.00       1         timer_get_ms [17]
------------------------------------------------
-                0.00    0.00       1/1           main [1]
-[18]     0.0    0.00    0.00       1         timer_get_s [18]
-                0.00    0.00       1/1           timer_get_ms [17]
+                0.00    0.00       1/1           timer_get_s [15]
+[14]     0.0    0.00    0.00       1         timer_get_ms [14]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[19]     0.0    0.00    0.00       1         timer_init [19]
+[15]     0.0    0.00    0.00       1         timer_get_s [15]
+                0.00    0.00       1/1           timer_get_ms [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[16]     0.0    0.00    0.00       1         timer_init [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[17]     0.0    0.00    0.00       1         timer_start [17]
+                0.00    0.00       1/10000       minmax_normalize_point [11]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         timer_stop [18]
+                0.00    0.00       1/10000       minmax_normalize_point [11]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -227,9 +223,9 @@ notice and this notice are preserved.
 
 Index by function name
 
-   [9] ___chkstk_ms            [7] minmax                 [16] timer_destroy
-  [10] _mcount_private         [8] minmax_normalize       [17] timer_get_ms
-  [14] copy_k_nearest          [6] minmax_normalize_point [18] timer_get_s
-   [2] get_k_NN               [15] plurality_voting       [19] timer_init
-  [11] isnan                   [4] select_k_nearest       [12] timer_start
-   [3] knn_classifyinstance    [5] sqrt                   [13] timer_stop
+  [10] __fpclassify            [6] minmax_normalize       [14] timer_get_ms
+   [8] copy_k_nearest         [11] minmax_normalize_point [15] timer_get_s
+   [2] get_k_NN               [12] plurality_voting       [16] timer_init
+   [9] isnan                   [4] select_k_nearest       [17] timer_start
+   [3] knn_classifyinstance    [5] sqrt                   [18] timer_stop
+   [7] minmax                 [13] timer_destroy

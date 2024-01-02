@@ -2009,4 +2009,4 @@ kNN: number of classifications right = 1008
 kNN: accuracy = 50.50 %
 
 
-Time:  5.9136 s
+Time:  5.0580 s

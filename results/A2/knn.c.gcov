@@ -30,77 +30,77 @@
         -:   29:*  Copy the top k nearest points (first k elements of dist_points) 
         -:   30:*  to a data structure (best_points) with k points
         -:   31:*/
-     5988:   32:void copy_k_nearest(BestPoint *dist_points, int num_points,
+     7984:   32:void copy_k_nearest(BestPoint *dist_points, int num_points,
         -:   33:		BestPoint *best_points, int k) {
         -:   34:
-   125748:   35:    for(int i = 0; i < k; i++) {   // we only need the top k minimum distances
-   119760:   36:       best_points[i].classification_id = dist_points[i].classification_id;
-   119760:   37:       best_points[i].distance = dist_points[i].distance;
+   167664:   35:    for(int i = 0; i < k; i++) {   // we only need the top k minimum distances
+   159680:   36:       best_points[i].classification_id = dist_points[i].classification_id;
+   159680:   37:       best_points[i].distance = dist_points[i].distance;
         -:   38:    }
         -:   39:
-     5988:   40:}
+     7984:   40:}
         -:   41:
         -:   42:/**
         -:   43:*  Get the k nearest points.
         -:   44:*  This version stores the k nearest points in the first k positions of dis_point
         -:   45:*/
-     5988:   46:void select_k_nearest(BestPoint *dist_points, int num_points, int k) {
+     7984:   46:void select_k_nearest(BestPoint *dist_points, int num_points, int k) {
         -:   47:
         -:   48:    DATA_TYPE min_distance, distance_i;
         -:   49:    CLASS_ID_TYPE class_id_1;
         -:   50:    int index;
         -:   51:
-   125748:   52:    for(int i = 0; i < k; i++) {  // we only need the top k minimum distances
-   119760:   53:      min_distance = dist_points[i].distance;
-   119760:   54:      index = i;
-957421320:   55:      for(int j = i+1; j < num_points; j++) {
-957301560:   56:              if(dist_points[j].distance < min_distance) {
-  1012851:   57:                  min_distance = dist_points[j].distance;
-  1012851:   58:                  index = j;
+   167664:   52:    for(int i = 0; i < k; i++) {  // we only need the top k minimum distances
+   159680:   53:      min_distance = dist_points[i].distance;
+   159680:   54:      index = i;
+1276561760:   55:      for(int j = i+1; j < num_points; j++) {
+1276402080:   56:              if(dist_points[j].distance < min_distance) {
+  1350468:   57:                  min_distance = dist_points[j].distance;
+  1350468:   58:                  index = j;
         -:   59:              }
         -:   60:      }
-   119760:   61:      if(index != i) { //swap
-   119745:   62:         distance_i = dist_points[index].distance;
-   119745:   63:         class_id_1 = dist_points[index].classification_id;
+   159680:   61:      if(index != i) { //swap
+   159660:   62:         distance_i = dist_points[index].distance;
+   159660:   63:         class_id_1 = dist_points[index].classification_id;
         -:   64:
-   119745:   65:         dist_points[index].distance = dist_points[i].distance;
-   119745:   66:         dist_points[index].classification_id = dist_points[i].classification_id;
+   159660:   65:         dist_points[index].distance = dist_points[i].distance;
+   159660:   66:         dist_points[index].classification_id = dist_points[i].classification_id;
         -:   67:
-   119745:   68:         dist_points[i].distance = distance_i;
-   119745:   69:         dist_points[i].classification_id = class_id_1;
+   159660:   68:         dist_points[i].distance = distance_i;
+   159660:   69:         dist_points[i].classification_id = class_id_1;
         -:   70:      }
         -:   71:    }
-     5988:   72:}
+     7984:   72:}
         -:   73:
         -:   74:/*
         -:   75:* Main kNN function.
         -:   76:* It calculates the distances and calculates the nearest k points.
         -:   77:*/
-     5988:   78:void get_k_NN(Point new_point, Point *known_points, int num_points,
-     5988:   79:	BestPoint *best_points, int k,  int num_features) {
+     7984:   78:void get_k_NN(Point new_point, Point *known_points, int num_points,
+     7984:   79:	BestPoint *best_points, int k,  int num_features) {
         -:   80:     
-     5988:   81:     BestPoint dist_points[num_points];
+     7984:   81:     BestPoint dist_points[num_points];
         -:   82:
         -:   83:    // calculate the Euclidean distance between the Point to classify and each one in the model
         -:   84:    // and update the k best points if needed
- 47933940:   85:    for (int i = 0; i < num_points; i++) {
- 47927952:   86:        DATA_TYPE distance = (DATA_TYPE) 0.0;
+ 63911920:   85:    for (int i = 0; i < num_points; i++) {
+ 63903936:   86:        DATA_TYPE distance = (DATA_TYPE) 0.0;
         -:   87:
         -:   88:        // calculate the Euclidean distance
-4840723152:   89:        for (int j = 0; j < num_features; j++) {
-4792795200:   90:            DATA_TYPE diff = (DATA_TYPE) new_point.features[j] - (DATA_TYPE) known_points[i].features[j];
-4792795200:   91:            distance += diff * diff;
+6454297536:   89:        for (int j = 0; j < num_features; j++) {
+6390393600:   90:            DATA_TYPE diff = (DATA_TYPE) new_point.features[j] - (DATA_TYPE) known_points[i].features[j];
+6390393600:   91:            distance += diff * diff;
         -:   92:        }
- 47927952:   93:        distance = sqrt(distance);
+ 63903936:   93:        distance = sqrt(distance);
         -:   94:
- 47927952:   95:        dist_points[i].classification_id = known_points[i].classification_id;
- 47927952:   96:        dist_points[i].distance = distance;
+ 63903936:   95:        dist_points[i].classification_id = known_points[i].classification_id;
+ 63903936:   96:        dist_points[i].distance = distance;
         -:   97:    }
         -:   98:
-     5988:   99:    select_k_nearest(dist_points, num_points, k);
+     7984:   99:    select_k_nearest(dist_points, num_points, k);
         -:  100:    
-     5988:  101:    copy_k_nearest(dist_points, num_points, best_points, k);
-     5988:  102:}
+     7984:  101:    copy_k_nearest(dist_points, num_points, best_points, k);
+     7984:  102:}
         -:  103:
         -:  104:/*
         -:  105:*	Classify using the k nearest neighbors identified by the get_k_NN
@@ -109,54 +109,54 @@
         -:  108:*	Note: it assumes that classes are identified from 0 to
         -:  109:*	num_classes - 1.
         -:  110:*/
-     5988:  111:CLASS_ID_TYPE plurality_voting(int k, BestPoint *best_points, int num_classes) {
+     7984:  111:CLASS_ID_TYPE plurality_voting(int k, BestPoint *best_points, int num_classes) {
         -:  112:  
-     5988:  113:              CLASS_ID_TYPE histogram[num_classes];  // maximum is the value of k
+     7984:  113:              CLASS_ID_TYPE histogram[num_classes];  // maximum is the value of k
         -:  114:
         -:  115:    //initialize the histogram
-    53892:  116:    for (int i = 0; i < num_classes; i++) {
-    47904:  117:        histogram[i] = 0;
+    71856:  116:    for (int i = 0; i < num_classes; i++) {
+    63872:  117:        histogram[i] = 0;
         -:  118:    }
         -:  119:
         -:  120:    // build the histogram
-   125748:  121:    for (int i = 0; i < k; i++) {
-   119760:  122:        BestPoint p = best_points[i];
+   167664:  121:    for (int i = 0; i < k; i++) {
+   159680:  122:        BestPoint p = best_points[i];
         -:  123:        //if (best_points[i].distance < min_distance) {
         -:  124:        //    min_distance = best_points[i].distance;
         -:  125:        //}
         -:  126:
         -:  127:        assert(p.classification_id != -1);
         -:  128:
-   119760:  129:        histogram[(int) p.classification_id] += 1;
+   159680:  129:        histogram[(int) p.classification_id] += 1;
         -:  130:    }
         -:  131:
-     5988:  132:    CLASS_ID_TYPE max = 0; // maximum is k
-     5988:  133:    CLASS_ID_TYPE classification_id = -1;  // -1 represents an unknown class
-    53892:  134:    for (int i = 0; i < num_classes; i++) {
+     7984:  132:    CLASS_ID_TYPE max = 0; // maximum is k
+     7984:  133:    CLASS_ID_TYPE classification_id = -1;  // -1 represents an unknown class
+    71856:  134:    for (int i = 0; i < num_classes; i++) {
         -:  135:
-    47904:  136:        if (histogram[i] > max) {
-    13362:  137:            max = histogram[i];
-    13362:  138:            classification_id = (CLASS_ID_TYPE) i;
+    63872:  136:        if (histogram[i] > max) {
+    17816:  137:            max = histogram[i];
+    17816:  138:            classification_id = (CLASS_ID_TYPE) i;
         -:  139:        }
         -:  140:    }
         -:  141:
-     5988:  142:    return classification_id;
+     7984:  142:    return classification_id;
         -:  143:}
         -:  144:
         -:  145:/*
         -:  146:* Classify a given Point (instance).
         -:  147:* It returns the classified class ID.
         -:  148:*/
-     5988:  149:CLASS_ID_TYPE knn_classifyinstance(Point new_point, int k, int num_classes, Point *known_points, int num_points, int num_features) {
+     7984:  149:CLASS_ID_TYPE knn_classifyinstance(Point new_point, int k, int num_classes, Point *known_points, int num_points, int num_features) {
         -:  150:
-     5988:  151:      BestPoint best_points[k]; // Array with the k nearest points to the Point to classify
+     7984:  151:      BestPoint best_points[k]; // Array with the k nearest points to the Point to classify
         -:  152:
         -:  153:      // calculate the distances of the new point to each of the known points and get
         -:  154:      // the k nearest points
-     5988:  155:       get_k_NN(new_point, known_points, num_points, best_points, k, num_features);
+     7984:  155:       get_k_NN(new_point, known_points, num_points, best_points, k, num_features);
         -:  156:
         -:  157:	// use plurality voting to return the class inferred for the new point
-     5988:  158:	CLASS_ID_TYPE classID = plurality_voting(k, best_points, num_classes);
+     7984:  158:	CLASS_ID_TYPE classID = plurality_voting(k, best_points, num_classes);
         -:  159:
-     5988:  160:	return classID;
+     7984:  160:	return classID;
         -:  161:}

@@ -1,0 +1,23 @@
+Analysis started...
+Collection has been started.
+Result file: D:\Universidade\CHE\CHE\results\advisor\knn\e000\mp000\mp000.advixe 
+Found target process d:\universidade\che\che\knn-ver1-oct2023\knn.exe (PID = 24960). Analysis started... 
+Loaded module: d:\universidade\che\che\knn-ver1-oct2023\knn.exe. 
+Loaded module: c:\windows\system32\kernelbase.dll. 
+Loaded module: c:\windows\system32\kernel32.dll. 
+Loaded module: c:\windows\system32\ntdll.dll. 
+Loaded module: c:\windows\system32\ucrtbase.dll. 
+Loaded module: c:\windows\system32\kernel.appcore.dll. 
+Loaded module: c:\windows\system32\msvcrt.dll. 
+Unloaded module: d:\universidade\che\che\knn-ver1-oct2023\knn.exe. 
+Unloaded module: c:\windows\system32\kernelbase.dll. 
+Unloaded module: c:\windows\system32\kernel32.dll. 
+Unloaded module: c:\windows\system32\ntdll.dll. 
+Unloaded module: c:\windows\system32\ucrtbase.dll. 
+Unloaded module: c:\windows\system32\kernel.appcore.dll. 
+Unloaded module: c:\windows\system32\msvcrt.dll. 
+Process d:\universidade\che\che\knn-ver1-oct2023\knn.exe (PID = 24960) has terminated. 
+Warning: No SITE annotations were encountered, so no stride/alignment data can be reported. 
+Application exit code: 0 
+Result file: D:\Universidade\CHE\CHE\results\advisor\knn\e000\mp000\mp000.advixe 
+Analysis completed
