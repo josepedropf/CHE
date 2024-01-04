@@ -35,12 +35,6 @@ void copy_k_nearest(CLASS_ID_TYPE *dist_points_classification_id, DATA_TYPE *dis
 		CLASS_ID_TYPE *bp_classification_id, DATA_TYPE *bp_distance, int k) {
 
     for(int i = 0; i < k; i++) {   // we only need the top k minimum distances
-       //best_points[i].classification_id = dist_points[i].classification_id;
-       //best_points[i].distance = dist_points[i].distance;
-
-       //bp_classification_id[i] = dist_points[i].classification_id;
-       //bp_distance[i] = dist_points[i].distance;
-
        bp_classification_id[i] = dist_points_classification_id[i];
        bp_distance[i] = distance_dist_points[i];
     }
@@ -113,13 +107,12 @@ void select_k_nearest(CLASS_ID_TYPE *dist_points_classification_id, DATA_TYPE *d
  void get_k_NN(Point new_point, DATA_TYPE (*kp_features)[NUM_FEATURES], CLASS_ID_TYPE *kp_classification_id, int num_points,
 	CLASS_ID_TYPE *bp_classification_id, DATA_TYPE *bp_distance, int k,  int num_features) {
      
-     //BestPoint dist_points[num_points];
-
-     CLASS_ID_TYPE dist_points_classification_id[num_points];
-     DATA_TYPE distance_dist_points[num_points];
+    CLASS_ID_TYPE dist_points_classification_id[num_points];
+    DATA_TYPE distance_dist_points[num_points];
 
     // calculate the Euclidean distance between the Point to classify and each one in the model
     // and update the k best points if needed
+
     #pragma omp parallel for
     for (int i = 0; i < num_points; i++) {
         DATA_TYPE distance = (DATA_TYPE) 0.0;
@@ -127,17 +120,11 @@ void select_k_nearest(CLASS_ID_TYPE *dist_points_classification_id, DATA_TYPE *d
         // calculate the Euclidean distance
         DATA_TYPE adiff[4];
         for (int j = 0; j < num_features; j+=4) {
-            /*
-            DATA_TYPE diff0 = (DATA_TYPE)new_point.features[j] - (DATA_TYPE)known_points[i].features[j];
-            DATA_TYPE diff1 = (DATA_TYPE)new_point.features[j + 1] - (DATA_TYPE)known_points[i].features[j + 1];
-            DATA_TYPE diff2 = (DATA_TYPE)new_point.features[j + 2] - (DATA_TYPE)known_points[i].features[j + 2];
-            DATA_TYPE diff3 = (DATA_TYPE)new_point.features[j + 3] - (DATA_TYPE)known_points[i].features[j + 3];
-            */
             
-            adiff[0] = (DATA_TYPE)new_point.features[j] - (DATA_TYPE)kp_features[i][j];
-            adiff[1] = (DATA_TYPE)new_point.features[j + 1] - (DATA_TYPE)kp_features[i][j + 1];
-            adiff[2] = (DATA_TYPE)new_point.features[j + 2] - (DATA_TYPE)kp_features[i][j + 2];
-            adiff[3] = (DATA_TYPE)new_point.features[j + 3] - (DATA_TYPE)kp_features[i][j + 3];
+            adiff[0] = (DATA_TYPE)new_point.features[j] - kp_features[i][j];
+            adiff[1] = (DATA_TYPE)new_point.features[j + 1] - kp_features[i][j + 1];
+            adiff[2] = (DATA_TYPE)new_point.features[j + 2] - kp_features[i][j + 2];
+            adiff[3] = (DATA_TYPE)new_point.features[j + 3] - kp_features[i][j + 3];
 
             distance += adiff[0] * adiff[0];
             distance += adiff[1] * adiff[1];
@@ -146,14 +133,17 @@ void select_k_nearest(CLASS_ID_TYPE *dist_points_classification_id, DATA_TYPE *d
         }
 
         for (int j = 0; j < num_features % 4; j++) {
-            DATA_TYPE diff = (DATA_TYPE)new_point.features[j] - (DATA_TYPE)kp_features[i][j];
+            DATA_TYPE diff = (DATA_TYPE)new_point.features[j] - kp_features[i][j];
             distance += diff * diff;
         }
-        distance = sqrt(distance);
 
-        //dist_points[i].classification_id = known_points[i].classification_id;
-        //dist_points[i].distance = distance;
-
+        if(DT == 2){
+            distance = sqrtf(distance);
+        }
+        else{
+            distance = sqrt(distance);
+        }
+        
         dist_points_classification_id[i] = kp_classification_id[i];
         distance_dist_points[i] = distance;
     }
@@ -222,6 +212,7 @@ CLASS_ID_TYPE knn_classifyinstance(Point new_point, int k, int num_classes, Poin
       DATA_TYPE kp_features[NUM_TRAINING_SAMPLES][NUM_FEATURES];
       CLASS_ID_TYPE kp_classification_id[NUM_TRAINING_SAMPLES];
 
+      #pragma omp parallel for
       for(int i = 0; i < NUM_TRAINING_SAMPLES; i++){
         kp_classification_id[i] = known_points[i].classification_id;
         for(int j = 0; j < num_features; j++){
