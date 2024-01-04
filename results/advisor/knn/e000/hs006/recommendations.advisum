@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <!DOCTYPE IntelParallelAdvisorSummaryCollection SYSTEM  "IntelParallelAdvisorSummaryCollection.dtd"> -->
+
+<IntelParallelAdvisorSummary version="" 
+                             kind="DATAKIND_SURVEY_EX" >
+  <hotspot filename="D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.c"
+           line_no="89"
+           routine="get_k_NN"
+           is_vectorized="0"
+           self_time="5.743186E-02"
+           total_time="0.000000E+00"
+           trip_counts=""
+           func_instance="6"
+           priority="0">
+           <recommendation id="rec_align_loop_c" title="Force the compiler to align loop code" confidence="1" gain="-1"/>
+  </hotspot>
+</IntelParallelAdvisorSummary >

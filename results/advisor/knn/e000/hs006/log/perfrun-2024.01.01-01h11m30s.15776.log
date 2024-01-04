@@ -1,0 +1,104 @@
+69 [24292] INFO perfrun.launcher <> - Launcher main begin
+77 [24292] INFO perfrun.launcher <> - MessageCatalogInit finished
+77 [24292] INFO perfrun.launcher <> - Launcher instance created
+77 [24292] INFO perfrun.launcher <> - argc = 7; cmdline = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\advixe-runss.exe --ui-output-format xml --ui-output-fd 4412 --option-file D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\config\runss.options 
+133 [24292] INFO perfrun.launcher <> - New signal handler callback was added
+3124 [24292] INFO perfrun.launcher <> - create msngr2::ICliToolContext
+3125 [24292] INFO perfrun.launcher <> - create file finder object
+3125 [24292] INFO perfrun.launcher <> - create a result directory: pattern = D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006 pid = 4294967295
+3150 [24292] INFO perfrun.launcher <> - create data directory = D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\data.0
+3151 [24292] INFO perfrun.launcher <> - Creating the master collection flag
+3161 [24292] INFO perfrun.launcher <> - Done creating the master collection flag
+3161 [11780] INFO perfrun.launcher <> - plugin [remoteplug] was disabled because it doesn't support the given collection type.
+3161 [11780] INFO perfrun.sdk <> - Allocating TMU :D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\data.0\systemcollector-15776-ZPMSI.sc
+3162 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3165 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3165 [11780] INFO perfrun.launcher <> - plugin [gpu] was disabled because it doesn't support the given collection type.
+3166 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3166 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3166 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3166 [11780] INFO perfrun.mrte <> - system-wide mode is 0
+3166 [11780] INFO perfrun.mrte <> - Getting  mrte profiling environment ...
+3247 [11780] INFO perfrun.mrte <> - INTEL_MRTE_DATA_DIR=D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\data.0
+3247 [11780] INFO perfrun.mrte <> - INTEL_MRTE_HOST_NAME=ZPMSI
+3247 [11780] INFO perfrun.mrte <> - JAVA_TOOL_OPTIONS=-agentlib:advixe_tpssmrte_javaprof_1.0
+3247 [11780] INFO perfrun.mrte <> - PATH=D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin32\runtime;D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\runtime;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;D:\Programas\PlasticSCM5\server;D:\Programas\PlasticSCM5\client;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\Portugal Identity Card\;C:\Program Files\php-8.1.1-Win32-vs16-x64;C:\composer;C:\Users\MSI\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Jadx\jadx-1.2.0\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\WireGuard\;C:\Program Files\Docke;C:\Program Files\Go\bin;D:\Program Files\Graphviz\bin;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\.dotnet\tools;C:\Windows.old\Users\MSI\AppData\Local\GitHubDesktop\bin;C:\Users\MSI\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\MSI\AppData\Local\atom\bin;C:\Users\MSI\AppData\Roaming\cabal\bin;C:\tools\ghc-9.0.1\bin;C:\tools\msys64;C:\Users\MSI\AppData\Roaming\Composer\vendor\bin;C:\Users\MSI\AppData\Roaming\npm;C:\Users\MSI\Desktop\Universidade\flutter\bin;C:\Program Files\Java\javacc21-master\javacc21-master\bin;C:\Gradle\gradle-7.4.1-bin\gradle-7.4.1\bin;C:\Program Files\Java\jdk-11.0.10\bin;C:\tools\dart-sdk\bin;C:\Users\MSI\AppData\Roaming\Pub\Cache\bin;C:\tools\dart-sdk;C:\Users\MSI\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Jadx\jadx-1.2.0\bin;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\Desktop\Universidade\SDLE\vcpkg\packages\czmq_x86-windows\bin;C:\Users\MSI\.dotnet\tools;C:\Users\MSI\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\MSI\.wdm\drivers\chromedriver\win64\116.0.5845.112\chromedriver-win32\chromedriver.exe;D:\msys64\ucrt64\bin;C:\Users\MSI\.wdm\drivers\chromedriver\win64\116.0.5845.188\chromedriver-win32;C:\Users\MSI\go\bin
+3247 [11780] INFO perfrun.mrte <> - COR_ENABLE_PROFILING=1
+3247 [11780] INFO perfrun.mrte <> - COR_PROFILER={10337B79-F6CD-4df9-8D18-26A67272096B}
+3247 [11780] INFO perfrun.mrte <> - COMPLUS_ProfAPI_ProfilerCompatibilitySetting=EnableV2Profiler
+3247 [11780] INFO perfrun.mrte <> - CORECLR_ENABLE_PROFILING=1
+3247 [11780] INFO perfrun.mrte <> - CORECLR_PROFILER={10337B79-F6CD-4df9-8D18-26A67272096B}
+3247 [11780] INFO perfrun.mrte <> - CORECLR_PROFILER_PATH=D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64/advixe_samplingmrte_clrprof_1.0.dll
+3247 [11780] INFO perfrun.mrte <> - INTEL_MRTE_PROFILER_MODE=mixed
+3247 [11780] INFO perfrun.mrte <> - Data directory: D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\data.0
+3247 [11780] INFO perfrun.mrte <> - Mrte plugin is initialized
+3247 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3247 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3247 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3247 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3247 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3247 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3247 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3247 [11780] INFO perfrun.tpss <> - initialize tpss controller
+3247 [11780] INFO perfrun.tpss <> - configure collection mode: value = cpu:stack
+3248 [11780] INFO perfrun.tpss <> - default obj-size-min=1024
+3248 [11780] INFO perfrun.tpss <> - default hash-table-size=0
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [11780] INFO perfrun.launcher <> - plugin [] was disabled because it doesn't support the given collection type.
+3248 [24292] INFO perfrun.launcher <> - set environment variable: PATH = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin32\runtime;D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\runtime;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;D:\Programas\PlasticSCM5\server;D:\Programas\PlasticSCM5\client;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\Portugal Identity Card\;C:\Program Files\php-8.1.1-Win32-vs16-x64;C:\composer;C:\Users\MSI\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Jadx\jadx-1.2.0\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\WireGuard\;C:\Program Files\Docke;C:\Program Files\Go\bin;D:\Program Files\Graphviz\bin;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\.dotnet\tools;C:\Windows.old\Users\MSI\AppData\Local\GitHubDesktop\bin;C:\Users\MSI\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\MSI\AppData\Local\atom\bin;C:\Users\MSI\AppData\Roaming\cabal\bin;C:\tools\ghc-9.0.1\bin;C:\tools\msys64;C:\Users\MSI\AppData\Roaming\Composer\vendor\bin;C:\Users\MSI\AppData\Roaming\npm;C:\Users\MSI\Desktop\Universidade\flutter\bin;C:\Program Files\Java\javacc21-master\javacc21-master\bin;C:\Gradle\gradle-7.4.1-bin\gradle-7.4.1\bin;C:\Program Files\Java\jdk-11.0.10\bin;C:\tools\dart-sdk\bin;C:\Users\MSI\AppData\Roaming\Pub\Cache\bin;C:\tools\dart-sdk;C:\Users\MSI\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Jadx\jadx-1.2.0\bin;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\Desktop\Universidade\SDLE\vcpkg\packages\czmq_x86-windows\bin;C:\Users\MSI\.dotnet\tools;C:\Users\MSI\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\MSI\.wdm\drivers\chromedriver\win64\116.0.5845.112\chromedriver-win32\chromedriver.exe;D:\msys64\ucrt64\bin;C:\Users\MSI\.wdm\drivers\chromedriver\win64\116.0.5845.188\chromedriver-win32;C:\Users\MSI\go\bin
+3249 [24292] INFO perfrun.launcher <> - set environment variable: INTEL_LIBITTNOTIFY32 = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin32\runtime\ittnotify_collector.dll
+3249 [24292] INFO perfrun.launcher <> - set environment variable: INTEL_LIBITTNOTIFY64 = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\runtime\ittnotify_collector.dll
+3249 [24292] INFO perfrun.launcher <> - set environment variable: INTEL_ITTNOTIFY_GROUPS = 
+3249 [24292] INFO perfrun.launcher <> - set environment variable: INTEL_JIT_PROFILER32 = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin32\runtime\ittnotify_collector.dll
+3249 [24292] INFO perfrun.launcher <> - set environment variable: INTEL_JIT_PROFILER64 = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\runtime\ittnotify_collector.dll
+3250 [24292] INFO perfrun.launcher <> - set environment variable: ENABLE_JITPROFILING = 1
+3250 [24292] INFO perfrun.launcher <> - set environment variable: CL_CONFIG_USE_VTUNE = True
+3250 [24292] INFO perfrun.launcher <> - set environment variable: KMP_FORKJOIN_FRAMES = 0
+3250 [24292] INFO perfrun.launcher <> - set environment variable: KMP_FORKJOIN_FRAMES_MODE = 0
+3250 [24292] INFO perfrun.launcher <> - set environment variable: INTEL_MRTE_DATA_DIR = D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\data.0
+3250 [24292] INFO perfrun.launcher <> - set environment variable: INTEL_MRTE_HOST_NAME = ZPMSI
+3250 [24292] INFO perfrun.launcher <> - set environment variable: JAVA_TOOL_OPTIONS = -agentlib:advixe_tpssmrte_javaprof_1.0
+3250 [24292] INFO perfrun.launcher <> - set environment variable: PATH = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin32\runtime;D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\runtime;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;D:\Programas\PlasticSCM5\server;D:\Programas\PlasticSCM5\client;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\Portugal Identity Card\;C:\Program Files\php-8.1.1-Win32-vs16-x64;C:\composer;C:\Users\MSI\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Jadx\jadx-1.2.0\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\WireGuard\;C:\Program Files\Docke;C:\Program Files\Go\bin;D:\Program Files\Graphviz\bin;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\.dotnet\tools;C:\Windows.old\Users\MSI\AppData\Local\GitHubDesktop\bin;C:\Users\MSI\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\MSI\AppData\Local\atom\bin;C:\Users\MSI\AppData\Roaming\cabal\bin;C:\tools\ghc-9.0.1\bin;C:\tools\msys64;C:\Users\MSI\AppData\Roaming\Composer\vendor\bin;C:\Users\MSI\AppData\Roaming\npm;C:\Users\MSI\Desktop\Universidade\flutter\bin;C:\Program Files\Java\javacc21-master\javacc21-master\bin;C:\Gradle\gradle-7.4.1-bin\gradle-7.4.1\bin;C:\Program Files\Java\jdk-11.0.10\bin;C:\tools\dart-sdk\bin;C:\Users\MSI\AppData\Roaming\Pub\Cache\bin;C:\tools\dart-sdk;C:\Users\MSI\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Jadx\jadx-1.2.0\bin;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\Desktop\Universidade\SDLE\vcpkg\packages\czmq_x86-windows\bin;C:\Users\MSI\.dotnet\tools;C:\Users\MSI\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\MSI\.wdm\drivers\chromedriver\win64\116.0.5845.112\chromedriver-win32\chromedriver.exe;D:\msys64\ucrt64\bin;C:\Users\MSI\.wdm\drivers\chromedriver\win64\116.0.5845.188\chromedriver-win32;C:\Users\MSI\go\bin
+3251 [24292] INFO perfrun.launcher <> - set environment variable: COR_ENABLE_PROFILING = 1
+3251 [24292] INFO perfrun.launcher <> - set environment variable: COR_PROFILER = {10337B79-F6CD-4df9-8D18-26A67272096B}
+3251 [24292] INFO perfrun.launcher <> - set environment variable: COMPLUS_ProfAPI_ProfilerCompatibilitySetting = EnableV2Profiler
+3251 [24292] INFO perfrun.launcher <> - set environment variable: CORECLR_ENABLE_PROFILING = 1
+3251 [24292] INFO perfrun.launcher <> - set environment variable: CORECLR_PROFILER = {10337B79-F6CD-4df9-8D18-26A67272096B}
+3251 [24292] INFO perfrun.launcher <> - set environment variable: CORECLR_PROFILER_PATH = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64/advixe_samplingmrte_clrprof_1.0.dll
+3251 [24292] INFO perfrun.launcher <> - set environment variable: INTEL_MRTE_PROFILER_MODE = mixed
+3251 [24292] INFO perfrun.launcher <> - RpcServer: run RPC server to handle requests
+3279 [24292] INFO perfrun.sdk <> - IProcessUtil: the given executable 'D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn' is valid.
+3279 [24292] INFO perfrun.launcher <> - Launcher: command line to start before modification = D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn
+3282 [24292] INFO perfrun.launcher <> - Launcher: command line to start after modification = D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\pin.exe -error_file D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\data.0\pinerr.tpsslog -detach_reattach -probe -follow_execv -p32 D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin32\pin.exe -p64 D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\pin.exe -t64 D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin64\tpsstool.dll -t D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0\bin32\tpsstool.dll -server_name tpss_ipc.15776 -prd_dir D:\Program Files (x86)\Intel\oneAPI\advisor\2024.0 -- D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn
+3282 [24292] INFO perfrun.launcher <> - ProcessCreator object was created
+3345 [24292] INFO perfrun.launcher <> - Launcher: the process was started in suspend mode
+3347 [11780] INFO perfrun.itt <> - start itt controller for pid #24632
+3350 [11780] INFO perfrun.tpss <> - start tpss controller for pid #24632
+3403 [24292] INFO perfrun.launcher <> - Launcher: all plugins were started
+3403 [24292] INFO perfrun.launcher <> - DirectoryMonitor object was created
+3403 [24292] INFO perfrun.launcher <> - DirectoryMonitor: a callback was added
+3404 [24292] INFO perfrun.launcher <> - DirectoryMonitor was started with pingTime = 1000
+3404 [24292] INFO perfrun.launcher <> - DeadlineTimer is going to be constructed
+3404 [24292] INFO perfrun.launcher <> - DeadlineTimer: a callback was added
+3416 [24292] INFO perfrun.launcher <> - Launcher: resume the profiled application and  wait its termination or stop command
+5061 [24292] INFO perfrun.launcher <> - Launcher: the profiled application was terminated  with exit code = 0
+5088 [11780] WARN perfrun.system <> - Only 2 usec accuracy achieved for reference point, at file: vcs\perfrun1\plugins\system\src\trace_writer.cpp:320
+5106 [11780] INFO perfrun.itt <> - detach itt controller
+5106 [11780] INFO perfrun.itt <> - detach itt controller done
+5106 [11780] INFO perfrun.tpss <> - stop tpss controller
+5107 [11780] INFO perfrun.sdk <> - De-allocating TMU: D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\data.0\systemcollector-15776-ZPMSI.sc
+5128 [11780] INFO perfrun.system <> - closed the system trace file: D:\Universidade\CHE\CHE\results\advisor\knn\e000\hs006\data.0\systemcollector-15776-ZPMSI.sc
+5129 [24292] INFO perfrun.launcher <> - Launcher: all plugins were stopped.
+5129 [24292] INFO perfrun.launcher <> - DeadlineTimer is going to be destroyed
+5129 [24292] INFO perfrun.launcher <> - DeadlineTimer was destroyed
+5130 [24292] INFO perfrun.launcher <> - DirectoryMonitor object was destroyed
+5130 [24292] WARN perfrun.launcher <> - Stop command is ignored because it is received when collection is already stopped, at file: vcs\perfrun1\launcher\src\command_handler.cpp:226
+5132 [24292] INFO perfrun.launcher <> - Application exit code: 0
+5132 [24292] INFO perfrun.launcher <> - Exit code: 0

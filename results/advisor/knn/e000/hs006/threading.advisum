@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <!DOCTYPE IntelParallelAdvisorSummaryCollection SYSTEM  "IntelParallelAdvisorSummaryCollection.dtd"> -->
+
+<IntelParallelAdvisorSummary version="" 
+                             kind="DATAKIND_SURVEY_EX" >
+  <hotspot filename="D:\Universidade\CHE\CHE\knn-ver1-Oct2023\main.c"
+           line_no="198"
+           routine="main"
+           is_vectorized="0"
+           self_time="0.000000E+00"
+           total_time="2.491991E-01"
+           trip_counts="1082"
+           func_instance="3"
+           priority="0"/>
+  <hotspot filename="D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.c"
+           line_no="85"
+           routine="get_k_NN"
+           is_vectorized="0"
+           self_time="3.297870E-03"
+           total_time="6.072973E-02"
+           trip_counts="4336"
+           func_instance="8"
+           priority="0"/>
+  <hotspot filename="D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.c"
+           line_no="89"
+           routine="get_k_NN"
+           is_vectorized="0"
+           self_time="5.743186E-02"
+           total_time="5.743186E-02"
+           trip_counts="43"
+           func_instance="6"
+           priority="0"/>
+  <hotspot filename="D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.c"
+           line_no="55"
+           routine="select_k_nearest"
+           is_vectorized="0"
+           self_time="8.384423E-03"
+           total_time="8.384423E-03"
+           trip_counts="4334"
+           func_instance="10"
+           priority="0"/>
+  <hotspot filename="D:\Universidade\CHE\CHE\knn-ver1-Oct2023\knn.c"
+           line_no="52"
+           routine="select_k_nearest"
+           is_vectorized="0"
+           self_time="0.000000E+00"
+           total_time="8.384423E-03"
+           trip_counts="3"
+           func_instance="12"
+           priority="0"/>
+</IntelParallelAdvisorSummary >
