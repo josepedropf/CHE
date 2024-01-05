@@ -195,6 +195,18 @@ int main(int argc, char **argv) {
 	// instances arriving as streaming data.
 	// Here assume that the loop below needs to run in serial mode and the
 	// value of num_new_point is just to test
+
+	// AoS to SoA
+	DATA_TYPE kp_features[NUM_TRAINING_SAMPLES][NUM_FEATURES];
+    CLASS_ID_TYPE kp_classification_id[NUM_TRAINING_SAMPLES];
+
+	for(int i = 0; i < NUM_TRAINING_SAMPLES; i++){
+        kp_classification_id[i] = known_points[i].classification_id;
+        for(int j = 0; j < num_features; j++){
+            kp_features[i][j] = known_points[i].features[j];
+        }
+    }
+	
     for (int i = 0; i < num_new_points; i++) {
 
       // get instance to classify
@@ -208,7 +220,7 @@ int main(int argc, char **argv) {
 		#endif
 
         CLASS_ID_TYPE instance_class = knn_classifyinstance(*new_point, k, num_classes,
-                                       known_points, num_points, num_features);
+                                       kp_features, kp_classification_id, num_points, num_features);
 
                 // to show the data associated to the point
 		// show_point(*new_points,num_features);

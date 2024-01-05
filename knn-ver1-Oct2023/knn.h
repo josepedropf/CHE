@@ -28,8 +28,8 @@ void select_k_nearest(CLASS_ID_TYPE *dist_points_classification_id, DATA_TYPE *d
 void get_k_NN(Point new_point, DATA_TYPE (*kp_features)[NUM_FEATURES], CLASS_ID_TYPE *kp_classification_id, int num_points, CLASS_ID_TYPE *bp_classification_id, DATA_TYPE *bp_distance,
 		int k,  int num_features);
 
-CLASS_ID_TYPE plurality_voting(int k, CLASS_ID_TYPE *bp_classification_id, DATA_TYPE *bp_distance, int num_classes);
+CLASS_ID_TYPE plurality_voting(int k, CLASS_ID_TYPE *bp_classification_id, int num_classes);
 
-CLASS_ID_TYPE knn_classifyinstance(Point new_point, int k, int num_classes, Point *known_points, int num_points, int num_features);
+CLASS_ID_TYPE knn_classifyinstance(Point new_point, int k, int num_classes, DATA_TYPE (*kp_features)[NUM_FEATURES], CLASS_ID_TYPE *kp_classification_id, int num_points, int num_features);
 
 #endif
