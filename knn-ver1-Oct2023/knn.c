@@ -160,14 +160,14 @@ inline void select_k_nearest_20(CLASS_ID_TYPE *dist_points_classification_id, DA
 
  void get_k_NN(Point new_point, DATA_TYPE (*kp_features)[NUM_FEATURES], CLASS_ID_TYPE *kp_classification_id, int num_points,
 	CLASS_ID_TYPE *bp_classification_id, DATA_TYPE *bp_distance, int k,  int num_features) {
-     
+    
     CLASS_ID_TYPE dist_points_classification_id[num_points];
     DATA_TYPE distance_dist_points[num_points];
 
     // calculate the Euclidean distance between the Point to classify and each one in the model
     // and update the k best points if needed
 
-    
+    #pragma omp parallel for
     for (int i = 0; i < num_points; i++) {
         DATA_TYPE distance = (DATA_TYPE) 0.0;
 

@@ -1,4 +1,18 @@
 set POWERLOG="D:\Program Files\Intel\Power Gadget 3.6\PowerLog3.0.exe"
-set OUTPATH=..\results\power.csv
-set EXE=knn.exe
-call %POWERLOG% -file %OUTPATH% -cmd %EXE%
+set SCENARIO=%1
+set FLAGS=%2
+set COUNT=%3
+set CASE=%4
+
+if %CASE% == original_ set NAMECASE=original
+if %CASE% == nonloop_ set NAMECASE=nonloop
+if %CASE% == "" set NAMECASE=fullyoptimized
+if %FLAGS% == 0 set FLAGS=noflags
+if %FLAGS% == 1 set FLAGS=vect
+if %FLAGS% == 2 set FLAGS=O3
+if %FLAGS% == 3 set FLAGS=openmp
+
+set OUTPATH=..\stats\%SCENARIO%\%NAMECASE%\%FLAGS%
+if not exist %OUTPATH% mkdir %OUTPATH%
+
+call %POWERLOG% -file %OUTPATH%\power%COUNT%.csv -cmd %CASE%knn.exe

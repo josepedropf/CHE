@@ -1,0 +1,27 @@
+System Time,RDTSC,Elapsed Time (sec), CPU Utilization(%),CPU Frequency_0(MHz),Processor Power_0(Watt),Cumulative Processor Energy_0(Joules),Cumulative Processor Energy_0(mWh),IA Power_0(Watt),Cumulative IA Energy_0(Joules),Cumulative IA Energy_0(mWh),Package Temperature_0(C),Package Hot_0,DRAM Power_0(Watt),Cumulative DRAM Energy_0(Joules),Cumulative DRAM Energy_0(mWh),GT Power_0(Watt),Cumulative GT Energy_0(Joules),Cumulative GT Energy_0(mWh),Package PL1_0(Watt),Package PL2_0(Watt),Package PL4_0(Watt),Platform PsysPL1_0(Watt),Platform PsysPL2_0(Watt),GT Frequency(MHz),GT Utilization(%)
+04:33:55:394, 158673735932428,    0.113,   56.000, 3000,  45.375,   5.133,   1.426,  26.497,   2.998,   0.833, 91,  0,   3.528,   0.399,   0.111,   6.502,   0.736,   0.204,  45.000,  78.000,   0.000,   0.000,   0.000,99999999,   0.000
+04:33:55:502, 158673975821383,    0.222,   55.000, 3000,  45.488,  10.075,   2.799,  26.145,   5.838,   1.622, 92,  0,   3.772,   0.809,   0.225,   6.664,   1.460,   0.405,  45.000,  78.000,   0.000,   0.000,   0.000,99999999,   0.000
+04:33:55:625, 158674246401191,    0.344,   57.000, 3000,  44.492,  15.528,   4.313,  25.199,   8.926,   2.480, 91,  0,   3.771,   1.271,   0.353,   6.942,   2.310,   0.642,  45.000,  78.000,   0.000,   0.000,   0.000,99999999,   0.000
+04:33:55:734, 158674486734072,    0.453,   51.000, 3000,  44.129,  20.331,   5.647,  24.554,  11.599,   3.222, 90,  0,   3.758,   1.680,   0.467,   6.994,   3.071,   0.853,  45.000,  78.000,   0.000,   0.000,   0.000,99999999,   0.000
+04:33:55:857, 158674759138078,    0.577,   64.000, 2900,  48.471,  26.311,   7.309,  28.966,  15.172,   4.215, 92,  0,   3.877,   2.158,   0.600,   7.024,   3.938,   1.094,  45.000,  78.000,   0.000,   0.000,   0.000,99999999,   0.000
+04:33:55:995, 158675063223286,    0.714,   45.000, 2900,  43.059,  32.241,   8.956,  23.396,  18.395,   5.110, 88,  0,   3.784,   2.680,   0.744,   6.997,   4.902,   1.362,  45.000,  78.000,   0.000,   0.000,   0.000,99999999,   0.000
+04:33:56:057, 158675200778987,    0.777,   67.000, 3100,  35.664,  34.463,   9.573,  17.782,  19.502,   5.417, 87,  0,   2.530,   2.837,   0.788,   6.091,   5.281,   1.467,  45.000,  78.000,   0.000,   0.000,   0.000,99999999,   0.000
+
+Total Elapsed Time (sec) = 0.776557
+Measured RDTSC Frequency (GHz) = 2.208
+
+Cumulative Processor Energy_0 (Joules) = 34.462646
+Cumulative Processor Energy_0 (mWh) = 9.572957
+Average Processor Power_0 (Watt) = 44.378751
+
+Cumulative IA Energy_0 (Joules) = 19.502319
+Cumulative IA Energy_0 (mWh) = 5.417311
+Average IA Power_0 (Watt) = 25.113816
+
+Cumulative DRAM Energy_0 (Joules) = 2.837219
+Cumulative DRAM Energy_0 (mWh) = 0.788116
+Average DRAM Power_0 (Watt) = 3.653586
+
+Cumulative GT Energy_0 (Joules) = 5.281067
+Cumulative GT Energy_0 (mWh) = 1.466963
+Average GT Power_0 (Watt) = 6.800614

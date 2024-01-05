@@ -31,7 +31,7 @@
 *  Copy the top k nearest points (first k elements of dist_points) 
 *  to a data structure (best_points) with k points
 */
-inline void copy_k_nearest(CLASS_ID_TYPE *dist_points_classification_id, DATA_TYPE *distance_dist_points, int num_points,
+void copy_k_nearest(CLASS_ID_TYPE *dist_points_classification_id, DATA_TYPE *distance_dist_points, int num_points,
 		CLASS_ID_TYPE *bp_classification_id, DATA_TYPE *bp_distance, int k) {
 
     for(int i = 0; i < k; i++) {   // we only need the top k minimum distances
