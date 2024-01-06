@@ -1,9 +1,17 @@
 import os
 import csv
 
-SCENARIO = 'A1a'
-CASE = 'fullyoptimized'
-FLAGS = 'noflags'
+SCENARIOS = ['A1a', 'A1b', 'A1c', 'A2', 'A3']
+CASES = ['original', 'nonloop', 'fullyoptimized']
+FLAGSET = ['noflags', 'vect', 'O3', 'openmp']
+
+NSCENARIO = 2
+NCASE = 2
+NFLAG = 3
+
+SCENARIO = SCENARIOS[NSCENARIO]
+CASE = CASES[NCASE]
+FLAGS = FLAGSET[NFLAG]
 
 folder_path = '/stats/' + SCENARIO + '/' + CASE + '/' + FLAGS
 parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
@@ -63,6 +71,7 @@ avg_processor_energy = sum(processor_energies) / len(processor_energies)
 avg_processor_power = sum(processor_powers) / len(processor_powers)
 avg_execution_time = sum(execution_times) / len(execution_times)
 
+print(f"Average execution time: {avg_execution_time}")
 print(f"Average processor energy: {avg_processor_energy}")
 print(f"Average processor power: {avg_processor_power}")
-print(f"Average execution time: {avg_execution_time}")
+

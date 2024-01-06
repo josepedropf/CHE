@@ -1,3 +1,3 @@
 del /q /f *.gcno *.gcda *.gcov *.o *.exe
 call cp-wisdm.bat
-call wincomp_k3.bat 1 nonloop_
+call wincomp_k3.bat 3 

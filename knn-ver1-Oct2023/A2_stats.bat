@@ -5,9 +5,9 @@ set ITERS=10
 
 if not exist %OUTPATH% mkdir %OUTPATH%
 
-call %STATS% %ITERS% %SCENARIO% 0 original_
-call %STATS% %ITERS% %SCENARIO% 1 original_
-call %STATS% %ITERS% %SCENARIO% 2 original_
+::call %STATS% %ITERS% %SCENARIO% 0 original_
+::call %STATS% %ITERS% %SCENARIO% 1 original_
+::call %STATS% %ITERS% %SCENARIO% 2 original_
 
 call %STATS% %ITERS% %SCENARIO% 0 nonloop_
 call %STATS% %ITERS% %SCENARIO% 1 nonloop_
